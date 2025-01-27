@@ -1,4 +1,8 @@
-<x-guest-layout>
+@extends('base')
+@push('styles')
+    @vite('resources/css/form.css')
+@endpush
+@section('section')
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
 
@@ -36,4 +40,4 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+@endsection

@@ -11,8 +11,14 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){
-        Route::get('/', function () {
-            return view('welcome');
+        Route::middleware('guest')->group(function () {
+            Route::get('/', function () {
+                return view('welcome');
+            });
+
+            Route::fallback(function(){
+                return redirect()->route('register');
+            });
         });
 
         Route::get('/dashboard', function () {

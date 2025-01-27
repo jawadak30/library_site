@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Filament\Facades\Filament;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,5 +24,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         RouteServiceProvider::loadCachedRoutesUsing(fn() => $this->loadCachedRoutes());
+
     }
 }
