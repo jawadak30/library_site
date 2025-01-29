@@ -2,8 +2,12 @@
 @push('styles')
     @vite('resources/css/form.css')
 @endpush
+@section('header')
+    <x-header />
+@endsection
 @section('section')
 {{-- <x-guest-layout> --}}
+<div class="cont">
     <form method="POST" action="{{ route('register') }}" class="max-w-md mx-auto">
         @csrf
 
@@ -85,6 +89,7 @@
             </button>
         </div>
     </form>
+</div>
 
 {{-- </x-guest-layout> --}}
 @endsection

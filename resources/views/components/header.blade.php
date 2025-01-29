@@ -1,3 +1,8 @@
+
+@push('styles')
+@vite('resources/css/header.css')
+
+@endpush
 <header>
 
     <div class="header-top">
@@ -34,13 +39,20 @@
 
         <div class="header-top-actions">
 
-          <select name="language">
-
-            <option value="en-US">English</option>
-            <option value="es-ES">Espa&ntilde;ol</option>
-            <option value="fr">Fran&ccedil;ais</option>
-
-          </select>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                languages
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    <li>
+                        <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                            {{ $properties['native'] }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+          </div>
 
         </div>
 
@@ -68,9 +80,11 @@
 
         <div class="header-user-actions">
 
-          <button class="action-btn">
+            <a href="{{ route('register') }}" class="action-btn"><i class="fa-regular fa-user"></i></a>
+
+          {{-- <button class="action-btn">
             <ion-icon name="person-outline"></ion-icon>
-          </button>
+          </button> --}}
 
           <button class="action-btn">
             <ion-icon name="bag-handle-outline"></ion-icon>

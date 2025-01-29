@@ -32,4 +32,7 @@ Route::group(
         });
 
         require __DIR__.'/auth.php';
+        Route::fallback(function(){
+            return redirect()->route('dashboard');
+        });
     });

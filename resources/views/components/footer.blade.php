@@ -1,3 +1,7 @@
+
+@push('styles')
+    @vite('resources/css/footer.css')
+@endpush
 <footer>
 
     <div class="footer-nav">
@@ -196,8 +200,6 @@
     <div class="footer-bottom">
 
       <div class="container">
-
-        <img src="./assets/images/payment.png" alt="payment method" class="payment-img">
 
         <p class="copyright">
           Copyright &copy; <a href="#">Anon</a> all rights reserved.
