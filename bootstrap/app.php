@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Middleware\AuthAdmin;
+use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\AuthUser;
+use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -17,6 +21,11 @@ return Application::configure(basePath: dirname(__DIR__))
             'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
             'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
             'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
+            'auth'=>Authenticate::class,
+            'guest'=>RedirectIfAuthenticated::class,
+            'user'=>AuthUser::class,
+            'admin'=>AuthAdmin::class,
+
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

@@ -23,3 +23,5 @@
 @section('settings')
 @include('admin.admin_components.settings')
 @endsection
+
+

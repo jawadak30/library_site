@@ -62,11 +62,18 @@
                   <div class="m-0 border-0 shadow-none rounded card">
                       <div class="p-0 ">
                           <ul class="p-0 list-group list-group-flush">
-                              <li class="iq-sub-card list-group-item"><a class="p-0 d-flex justify-content-start d-flex align-items-center" href="#"><img src="" alt="img-flaf" class="img-fluid me-2" style="width: 15px;height: 15px;min-width: 15px;"/>Spanish</a></li>
+                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                <li class="iq-sub-card list-group-item">
+                                    <a class="p-0 d-flex justify-content-start d-flex align-items-center" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                        {{ $properties['native'] }}
+                                    </a>
+                                </li>
+                            @endforeach
+                              {{-- <li class="iq-sub-card list-group-item"><a class="p-0 d-flex justify-content-start d-flex align-items-center" href="#"><img src="" alt="img-flaf" class="img-fluid me-2" style="width: 15px;height: 15px;min-width: 15px;"/>Spanish</a></li>
                               <li class="iq-sub-card list-group-item"><a class="p-0 d-flex justify-content-start d-flex align-items-center" href="#"><img src="" alt="img-flaf" class="img-fluid me-2" style="width: 15px;height: 15px;min-width: 15px;"/>Italian</a></li>
                               <li class="iq-sub-card list-group-item"><a class="p-0 d-flex justify-content-start d-flex align-items-center" href="#"><img src="" alt="img-flaf" class="img-fluid me-2" style="width: 15px;height: 15px;min-width: 15px;"/>French</a></li>
                               <li class="iq-sub-card list-group-item"><a class="p-0 d-flex justify-content-start d-flex align-items-center" href="#"><img src="" alt="img-flaf" class="img-fluid me-2" style="width: 15px;height: 15px;min-width: 15px;"/>German</a></li>
-                              <li class="iq-sub-card list-group-item"><a class="p-0 d-flex justify-content-start d-flex align-items-center" href="#"><img src="" alt="img-flaf" class="img-fluid me-2" style="width: 15px;height: 15px;min-width: 15px;"/>Japanese</a></li>
+                              <li class="iq-sub-card list-group-item"><a class="p-0 d-flex justify-content-start d-flex align-items-center" href="#"><img src="" alt="img-flaf" class="img-fluid me-2" style="width: 15px;height: 15px;min-width: 15px;"/>Japanese</a></li> --}}
                           </ul>
                       </div>
                   </div>
@@ -234,10 +241,14 @@
               <li><a class="dropdown-item" href="../dashboard/app/user-profile.html">Profile</a></li>
               <li><a class="dropdown-item" href="../dashboard/app/user-privacy-setting.html">Privacy Setting</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="../dashboard/auth/sign-in.html">Logout</a></li>
+              <li><form method="POST" action="{{ route('logout_users') }}">
+                @csrf
+                <button type="submit" class="dropdown-item">Logout</button>
+            </form>
+            </li>
             </ul>
           </li>
         </ul>
       </div>
     </div>
-  </nav>          
+  </nav>

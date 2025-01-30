@@ -1,65 +1,90 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Livre;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 
 class LivreController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    // Display all books
+    public function all_books()
     {
-        //
+        $books = Livre::with('categorie')->get();
+        return view('admin.livres.all_books', compact('books'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    // Show form to add a new book
+    public function book_form_add()
     {
-        //
+        $categories = Categorie::all();
+        return view('admin.livres.add_book', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    // Store a new book
+    public function add_book(Request $request)
     {
-        //
+        $request->validate( [
+            'titre' => 'required|string|max:255',
+            'auteur' => 'required|string|max:255',
+            'editeur' => 'required|string|max:255',
+            'date_edition' => 'required|date',
+            'nbr_exemplaire' => 'required|integer|min:1',
+            'categorie_id' => 'required|exists:categories,id',
+        ]);
+
+        Livre::create($request->all());
+
+        return redirect()->route('all_books')->with('success', 'Livre ajouté avec succès');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Livre $livre)
+    // Show form to edit a book
+    public function book_form_update(Request $request)
     {
-        //
+        // Retrieve the ID from the request
+        $id = $request->id;
+        $book = Livre::findOrFail($id);
+        $categories = Categorie::all();
+
+        // Return the update view with the book and categories data
+        return view('admin.livres.update_book', compact('book', 'categories'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Livre $livre)
+    // Update book details
+    public function update(Request $request)
     {
-        //
+        // Retrieve the ID from the request
+        $id = $request->id;
+        $book = Livre::findOrFail($id);
+
+        // Validate the request
+        $request->validate([
+            'titre' => 'required|string|max:255',
+            'auteur' => 'required|string|max:255',
+            'editeur' => 'required|string|max:255',
+            'date_edition' => 'required|date',
+            'nbr_exemplaire' => 'required|integer|min:1',
+            'categorie_id' => 'required|exists:categories,id',
+        ]);
+
+        // Update the book
+        $book->update($request->all());
+
+        // Redirect with success message
+        return redirect()->route('all_books')->with('success', 'Livre mis à jour avec succès');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Livre $livre)
+    // Delete a book
+    public function destroy(Request $request)
     {
-        //
-    }
+        // Retrieve the ID from the request
+        $id = $request->id;
+        $book = Livre::findOrFail($id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Livre $livre)
-    {
-        //
+        // Delete the book
+        $book->delete();
+
+        // Redirect with success message
+        return redirect()->route('all_books')->with('success', 'Livre supprimé avec succès');
     }
 }

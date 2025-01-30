@@ -104,7 +104,7 @@
         <ul class="desktop-menu-category-list">
 
           <li class="menu-category">
-            <a href="#" class="menu-title">Home</a>
+            <a href="{{ route('guest_welcome') }}" class="menu-title">Home</a>
           </li>
 
           <li class="menu-category">
@@ -369,10 +369,13 @@
 
         <span class="count">0</span>
       </button>
-
-      <button class="action-btn">
+      <a class="action-btn" href="{{ route('guest_welcome') }}">
         <ion-icon name="home-outline"></ion-icon>
-      </button>
+        </a>
+
+      {{-- <button class="action-btn">
+        <ion-icon name="home-outline"></ion-icon>
+      </button> --}}
 
       <button class="action-btn" data-mobile-menu-open-btn>
         <ion-icon name="grid-outline"></ion-icon>

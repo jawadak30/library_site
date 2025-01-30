@@ -21,6 +21,7 @@
     @vite('resources/css/admin/custom.css')
     @vite('resources/css/admin/customizer.css')
     @vite('resources/css/admin/rtl.css')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     @stack('styles')
 </head>
 <body>
@@ -40,10 +41,14 @@
 
     @yield('settings')
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @include('admin.admin_components.sweet_alert_success')
+    @include('admin.admin_components.sweet_alert_error')
+    @yield('sweet_alert')
+
 </body>
 
 @stack('scripts')
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.6.3/smooth-scrollbar.js" defer></script>
 @vite('resources/js/admin/circle.js')

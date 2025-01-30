@@ -65,10 +65,11 @@ class User extends Authenticatable
 
     public function redirectAuthUser(){
         if ($this->isAdmin()) {
-            return redirect()->route('admin.dashboard');
+            return redirect()->intended(route('admin_dashboard')); // Redirect to intended URL or admin dashboard
         }
+
         if ($this->isUser()) {
-            return redirect()->route('welcome');
+            return redirect()->intended(route('welcome')); // Redirect to intended URL or welcome page
         }
     }
     public function profile(){
