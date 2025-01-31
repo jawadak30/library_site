@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoriesRequest;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CategorieController extends Controller
 {
@@ -34,30 +36,35 @@ class CategorieController extends Controller
     }
 
     // Show form to update a category
-    public function category_form_update(Request $request)
+    public function category_form_update($request)
     {
         // Retrieve the ID from the request
-        $id = $request->id;
+        $id = $request;
         $category = Categorie::findOrFail($id);
         return view('admin.categories.update_categories', compact('category'));
     }
 
-    // Update category details
-    public function update(Request $request)
+    public function update(CategoriesRequest $request, $id)
     {
-        // Retrieve the ID from the request
-        $id = $request->id;
+        // Find the category by the ID passed in the route
         $category = Categorie::findOrFail($id);
 
-        $request->validate([
-            'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
-            'description' => 'nullable|string',
-        ]);
+        // Get the validated data
+        $validatedData = $request->validated();
 
-        $category->update($request->all());
+        // Update the category with the validated data
+        $category->update($validatedData);
 
+        // Redirect after successful update
         return redirect()->route('all_categories')->with('success', 'Catégorie mise à jour avec succès');
     }
+
+
+
+
+
+
+
 
     // Delete a category
     public function destroy(Request $request)

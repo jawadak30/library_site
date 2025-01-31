@@ -45,9 +45,7 @@
                                     <td>{{ $book->categorie->name }}</td>
                                     <td>
                                         <!-- Update Button -->
-                                        <form action="{{ route('book_form_update') }}" method="POST" style="display: inline;">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $book->id }}">
+                                        <form action="{{ route('book_form_update', $book->id) }}" method="GET" style="display: inline;">
                                             <button type="submit" class="btn btn-primary btn-sm">Update</button>
                                         </form>
 

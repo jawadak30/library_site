@@ -39,9 +39,7 @@
                                     <td>{{ $category->description }}</td>
                                     <td>
                                         <!-- Update Button -->
-                                        <form action="{{ route('category_form_update') }}" method="POST" style="display: inline;">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $category->id }}">
+                                        <form action="{{ route('category_form_update',$category->id) }}" method="GET" style="display: inline;">
                                             <button type="submit" class="btn btn-primary btn-sm">Update</button>
                                         </form>
 

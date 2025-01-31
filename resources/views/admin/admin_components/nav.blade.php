@@ -35,15 +35,6 @@
           </svg>
           </i>
       </div>
-      <div class="input-group search-input">
-        <span class="input-group-text" id="search-input">
-          <svg class="icon-18" width="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="11.7669" cy="11.7666" r="8.98856" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></circle>
-              <path d="M18.0186 18.4851L21.5426 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
-        </span>
-        <input type="search" class="form-control" placeholder="Search...">
-      </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
             <span class="mt-2 navbar-toggler-bar bar1"></span>
@@ -54,10 +45,11 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
           <li class="nav-item dropdown">
-              <a href="#" class="search-toggle nav-link" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="" class="img-fluid rounded-circle" alt="user" style="height: 30px; min-width: 30px; width: 30px;">
+              {{-- <a href="#" class="search-toggle nav-link" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="" class="img-fluid rounded-circle" alt="languages" style="height: 30px; min-width: 30px; width: 30px;">
               <span class="bg-primary"></span>
-              </a>
+              </a> --}}
+              <a class="py-0 nav-link d-flex align-items-center" href="#" id="dropdownMenuButton2" role="button" data-bs-toggle="dropdown" aria-expanded="false">languages</a>
               <div class="p-0 sub-drop dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
                   <div class="m-0 border-0 shadow-none rounded card">
                       <div class="p-0 ">
@@ -226,20 +218,13 @@
           </li>
           <li class="nav-item dropdown custom-drop">
             <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="" alt="User-Profile" class="theme-color-default-img img-fluid avatar avatar-50 avatar-rounded">
-              <img src="" alt="User-Profile" class="theme-color-purple-img img-fluid avatar avatar-50 avatar-rounded">
-              <img src="" alt="User-Profile" class="theme-color-blue-img img-fluid avatar avatar-50 avatar-rounded">
-              <img src="" alt="User-Profile" class="theme-color-green-img img-fluid avatar avatar-50 avatar-rounded">
-              <img src="" alt="User-Profile" class="theme-color-yellow-img img-fluid avatar avatar-50 avatar-rounded">
-              <img src="" alt="User-Profile" class="theme-color-pink-img img-fluid avatar avatar-50 avatar-rounded">
               <div class="caption ms-3 d-none d-md-block ">
                   <h6 class="mb-0 caption-title">Austin Robertson</h6>
-                  <p class="mb-0 caption-sub-title">Marketing Administrator</p>
+                  <p class="mb-0 caption-sub-title">{{ auth()->user()->role }}</p>
               </div>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="../dashboard/app/user-profile.html">Profile</a></li>
-              <li><a class="dropdown-item" href="../dashboard/app/user-privacy-setting.html">Privacy Setting</a></li>
+              <li><a class="dropdown-item" href="{{ route('admin_profile') }}">Profile</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><form method="POST" action="{{ route('logout_users') }}">
                 @csrf

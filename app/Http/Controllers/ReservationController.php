@@ -11,6 +11,7 @@ class ReservationController extends Controller
     // Display all reservations
     public function all_reservations()
     {
+        // Fetch reservations with their associated user and livres
         $reservations = Reservation::with(['user', 'livres'])->get();
         return view('admin.reservations.all_reservations', compact('reservations'));
     }
@@ -53,8 +54,8 @@ class ReservationController extends Controller
     {
         $reservation = Reservation::findOrFail($id);
         $users = User::where('role', 'user')->get();
-        $books = Livre::all();
-        return view('admin.reservations.update_reservation', compact('reservation', 'users', 'books'));
+        $livres = Livre::all();
+        return view('admin.reservations.update_reservation', compact('reservation', 'users', 'livres'));
     }
 
     // Update reservation details
@@ -84,10 +85,9 @@ class ReservationController extends Controller
     }
 
     // Delete a reservation
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $reservation = Reservation::findOrFail($id);
-        $reservation->livres()->detach();
+        $reservation = Reservation::findOrFail($request->id);
         $reservation->delete();
 
         return redirect()->route('all_reservations')->with('success', 'Réservation supprimée avec succès');

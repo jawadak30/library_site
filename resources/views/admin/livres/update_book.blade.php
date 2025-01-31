@@ -23,10 +23,9 @@
                     </div>
                     <div class="card-body">
 
-                        <form action="{{ route('update_book') }}" method="POST">
+                        <form action="{{ route('update_book',$book->id) }}" method="POST">
                             @csrf
                             @method('PATCH')
-                            <input type="hidden" name="id" value="{{ $book->id }}">
 
                             <!-- Titre Field -->
                             <div class="form-group">

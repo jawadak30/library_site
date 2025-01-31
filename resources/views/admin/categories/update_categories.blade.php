@@ -23,47 +23,33 @@
                     </div>
                     <div class="card-body">
                         <!-- Display general form errors (if any) -->
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                        <!-- In your update form -->
 
-                        <form action="{{ route('update_category') }}" method="POST">
+                        <form action="{{ route('update_category', $category->id) }}" method="POST">
                             @csrf
                             @method('PATCH')
-                            <!-- Hidden input field for the category ID -->
-                            <input type="hidden" name="id" value="{{ $category->id }}">
 
-                            <div class="row">
-                                <!-- Category Name -->
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="name">Category Name</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $category->name) }}" >
-                                    @error('name')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <!-- Category Description -->
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="description">Description</label>
-                                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3">{{ old('description', $category->description) }}</textarea>
-                                    @error('description')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <!-- Submit Button -->
+                            <!-- Form fields -->
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Update Category</button>
+                                <label for="name">Category Name</label>
+                                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $category->name) }}">
+                                @error('name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
+
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror">{{ old('description', $category->description) }}</textarea>
+                                @error('description')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Update Category</button>
                         </form>
+
+
                     </div>
                 </div>
             </div>

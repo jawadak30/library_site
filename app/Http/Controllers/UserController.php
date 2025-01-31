@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -16,7 +17,9 @@ class UserController extends Controller
         // Display all users
         public function all_users()
         {
-            $users = User::all();
+            // Exclude the currently authenticated user
+            $users = User::where('id', '!=', Auth::id())->get();
+
             return view('admin.users.all_users', compact('users'));
         }
 
@@ -56,8 +59,10 @@ class UserController extends Controller
         // Update user details
         public function update(Request $request, $id)
         {
+            // Find the user
             $user = User::findOrFail($id);
 
+            // Validate the request
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
@@ -65,20 +70,23 @@ class UserController extends Controller
                 'role' => 'required|in:admin,user',
             ]);
 
-            $user->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'role' => $request->role,
-                'password' => $request->password ? Hash::make($request->password) : $user->password,
-            ]);
+            // Update the user
+            $user->name = $request->name;
+            $user->email = $request->email;
+            if ($request->password) {
+                $user->password = Hash::make($request->password);
+            }
+            $user->role = $request->role;
+            $user->save();
 
-            return redirect()->route('all_users')->with('success', 'Utilisateur mis à jour avec succès');
+            // Redirect with a success message
+            return redirect()->route('all_users')->with('success', 'User updated successfully.');
         }
 
         // Delete a user
-        public function destroy($id)
+        public function destroy(request $request)
         {
-            $user = User::findOrFail($id);
+            $user = User::findOrFail($request->id);
             $user->delete();
 
             return redirect()->route('all_users')->with('success', 'Utilisateur supprimé avec succès');

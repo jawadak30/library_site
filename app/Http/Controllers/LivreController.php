@@ -39,15 +39,11 @@ class LivreController extends Controller
     }
 
     // Show form to edit a book
-    public function book_form_update(Request $request)
+    public function book_form_update($id)
     {
-        // Retrieve the ID from the request
-        $id = $request->id;
-        $book = Livre::findOrFail($id);
-        $categories = Categorie::all();
-
-        // Return the update view with the book and categories data
-        return view('admin.livres.update_book', compact('book', 'categories'));
+        $book = Livre::findOrFail($id); // Fetch the book by ID
+        $categories = Categorie::all(); // Fetch categories for dropdown (if needed)
+        return view('admin.livres.update_book', compact('book', 'categories')); // Pass data to the view
     }
 
     // Update book details

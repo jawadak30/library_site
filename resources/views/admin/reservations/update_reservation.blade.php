@@ -11,69 +11,97 @@
 @endsection
 
 @section('container_fluid')
-<div class="conatiner-fluid content-inner mt-n5 py-0">
+<div class="container-fluid content-inner mt-n5 py-0">
     <div>
-       <div class="row">
-          <div class="col-sm-12 col-lg-6">
-             <div class="card">
-                <div class="card-header d-flex justify-content-between">
-                   <div class="header-title">
-                      <h4 class="card-title"> Default Validation</h4>
-                   </div>
-                </div>
-                <div class="card-body">
-                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-                   <form>
-                      <div class="row">
-                         <div class="col-md-6 mb-3">
-                            <label class="form-label" for="validationDefault01">First name</label>
-                            <input type="text" class="form-control" id="validationDefault01" required>
-                         </div>
-                         <div class="col-md-6 mb-3">
-                            <label class="form-label" for="validationDefault02">Last name</label>
-                            <input type="text" class="form-control" id="validationDefault02" required>
-                         </div>
-                         <div class="col-md-6 mb-3">
-                            <label for="validationCustomUsername" class="form-label">Username</label>
-                            <div class="form-group input-group">
-                               <span class="input-group-text" id="basic-addon1">@</span>
-                               <input type="text" class="form-control" id="validationCustomUsername" aria-label="Username" aria-describedby="basic-addon1" required>
+        <div class="row">
+            <div class="col-sm-12 col-lg-6">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                            <h4 class="card-title">Update Reservation</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Form -->
+                        <form action="{{ route('update_reservation', $reservation->id) }}" method="POST">
+                            @csrf
+                            @method('PATCH')
+
+                            <!-- Date d'Emprunt Field -->
+                            <div class="form-group">
+                                <label for="dateEmprunt">Date d'Emprunt</label>
+                                <input type="date" name="dateEmprunt" id="dateEmprunt" class="form-control @error('dateEmprunt') is-invalid @enderror" value="{{ old('dateEmprunt', $reservation->dateEmprunt) }}">
+                                @error('dateEmprunt')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
-                         </div>
-                         <div class="col-md-6 mb-3">
-                            <label class="form-label" for="validationDefault03">City</label>
-                            <input type="text" class="form-control" id="validationDefault03" required>
-                         </div>
-                         <div class="col-md-6 mb-3">
-                            <label class="form-label" for="validationDefault04">State</label>
-                            <select class="form-select" id="validationDefault04" required>
-                               <option selected disabled value="">Choose...</option>
-                               <option>...</option>
-                            </select>
-                         </div>
-                         <div class="col-md-6 mb-3">
-                            <label class="form-label" for="validationDefault05">Zip</label>
-                            <input type="text" class="form-control" id="validationDefault05" required>
-                         </div>
-                      </div>
-                      <div class="form-group">
-                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                            <label class="form-check-label" for="invalidCheck2">
-                            Agree to terms and conditions
-                            </label>
-                         </div>
-                      </div>
-                      <div class="form-group">
-                         <button class="btn btn-primary" type="submit">Submit form</button>
-                      </div>
-                   </form>
+
+                            <!-- Heure d'Emprunt Field -->
+                            <div class="form-group">
+                                <label for="heureEmprunt">Heure d'Emprunt</label>
+                                <input type="time" name="heureEmprunt" id="heureEmprunt" class="form-control @error('heureEmprunt') is-invalid @enderror" value="{{ old('heureEmprunt', $reservation->heureEmprunt) }}">
+                                @error('heureEmprunt')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <!-- Date de Réservation Field -->
+                            <div class="form-group">
+                                <label for="dateReservation">Date de Réservation</label>
+                                <input type="date" name="dateReservation" id="dateReservation" class="form-control @error('dateReservation') is-invalid @enderror" value="{{ old('dateReservation', $reservation->dateReservation) }}">
+                                @error('dateReservation')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <!-- État Field -->
+                            <div class="form-group">
+                                <label for="etat">État</label>
+                                <select name="etat" id="etat" class="form-control @error('etat') is-invalid @enderror">
+                                    <option value="en attente" {{ old('etat', $reservation->etat) == 'en attente' ? 'selected' : '' }}>En attente</option>
+                                    <option value="confirmée" {{ old('etat', $reservation->etat) == 'confirmée' ? 'selected' : '' }}>Confirmée</option>
+                                    <option value="annulée" {{ old('etat', $reservation->etat) == 'annulée' ? 'selected' : '' }}>Annulée</option>
+                                </select>
+                                @error('etat')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <!-- User Field -->
+                            <div class="form-group">
+                                <label for="user_id">Utilisateur</label>
+                                <select name="user_id" id="user_id" class="form-control @error('user_id') is-invalid @enderror">
+                                    @foreach($users as $user)
+                                        <option value="{{ $user->id }}" {{ old('user_id', $reservation->user_id) == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('user_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <!-- Livre Field -->
+                            <div class="form-group">
+                                <label for="livre_id">Livre</label>
+                                <select name="livre_id" id="livre_id" class="form-control @error('livre_id') is-invalid @enderror">
+                                    @foreach($livres as $livre)
+                                        <option value="{{ $livre->id }}" {{ old('livre_id', $reservation->livre_id) == $livre->id ? 'selected' : '' }}>{{ $livre->titre }}</option>
+                                    @endforeach
+                                </select>
+                                @error('livre_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary">Update Reservation</button>
+                        </form>
+                    </div>
                 </div>
-             </div>
-          </div>
-       </div>
+            </div>
+        </div>
     </div>
-    </div>
+</div>
 @endsection
 @section('settings')
     @include('admin.admin_components.settings')

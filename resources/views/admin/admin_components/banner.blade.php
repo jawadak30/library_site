@@ -4,8 +4,8 @@
             <div class="col-md-12">
                 <div class="flex-wrap d-flex justify-content-between align-items-center">
                     <div>
-                        <h1>Hello Devs!</h1>
-                        <p>We are on a mission to help developers like you build successful projects for FREE.</p>
+                        <h1>Hello {{ auth()->user()->name }}</h1>
+                        <p> Today is {{ now()->format('l, F j, Y') }}.</p>
                     </div>
                 </div>
             </div>
@@ -19,4 +19,4 @@
         <img src="{{ asset('dashboard/top-header4.png') }}" alt="header" class="theme-color-yellow-img img-fluid w-100 h-100 animated-scaleX">
         <img src="{{ asset('dashboard/top-header5.png') }}" alt="header" class="theme-color-pink-img img-fluid w-100 h-100 animated-scaleX">
     </div>
-</div>   
+</div>

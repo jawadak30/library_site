@@ -34,4 +34,15 @@ class AdminController extends Controller
             'newReservations'
         ));
     }
+    public function profile(){
+        $user = Auth::user();
+
+        // Ensure the user is an admin
+        if ($user->role !== 'admin') {
+            abort(403, 'Unauthorized action.'); // Return a 403 Forbidden response
+        }
+
+        // Pass the admin user data to the view
+        return view('admin.admin_components.profile', compact('user'));
+    }
 }
