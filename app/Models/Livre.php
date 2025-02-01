@@ -19,6 +19,8 @@ class Livre extends Model
         'date_edition',
         'nbr_exemplaire',
         'categorie_id' ,
+        'image1',
+        'image2'
     ];
     public function categorie()
     {

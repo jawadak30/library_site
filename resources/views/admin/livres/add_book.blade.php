@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('add_book') }}" method="POST">
+                        <form action="{{ route('add_book') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <!-- Titre Field -->
@@ -84,11 +84,30 @@
                                 @enderror
                             </div>
 
+                            <!-- Image1 Field -->
+                            <div class="form-group">
+                                <label for="image1">Image 1</label>
+                                <input type="file" name="image1" id="image1" class="form-control @error('image1') is-invalid @enderror">
+                                @error('image1')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <!-- Image2 Field -->
+                            <div class="form-group">
+                                <label for="image2">Image 2</label>
+                                <input type="file" name="image2" id="image2" class="form-control @error('image2') is-invalid @enderror">
+                                @error('image2')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             <!-- Submit Button -->
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Add Book</button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>

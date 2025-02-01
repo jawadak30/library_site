@@ -3,7 +3,7 @@
     @vite('resources/css/form.css')
 @endpush
 @section('header')
-    <x-header />
+    <x-header :categories="$categories" />
 @endsection
 @section('section')
 {{-- <x-guest-layout> --}}

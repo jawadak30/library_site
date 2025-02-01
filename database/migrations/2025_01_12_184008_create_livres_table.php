@@ -19,8 +19,10 @@ return new class extends Migration
             $table->date('date_edition');
             $table->integer('nbr_exemplaire');
             $table->foreignId('categorie_id')->constrained('categories')->cascadeOnDelete();
+            $table->string('image1');
+            $table->string('image2');
             $table->timestamps();
-            $table->softDeletes(); 
+            $table->softDeletes();
         });
     }
 

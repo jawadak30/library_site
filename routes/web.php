@@ -19,10 +19,8 @@ Route::group(
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){
         Route::middleware('guest')->group(function () {
-            Route::get('/', function () {
-                return view('welcome');
-            })->name('guest_welcome');
-
+            Route::get('/', [UserController::class, 'index'])->name('guest_welcome');
+            Route::get('/category/{id}/livres', [CategorieController::class, 'showLivres'])->name('showLivres');
             Route::fallback(function(){
                 return redirect()->route('welcome');
             });
@@ -30,6 +28,7 @@ Route::group(
 
         Route::prefix('/user')->middleware(['auth','user'])->group(function () {
             Route::get('/', [UserController::class, 'index'])->name('welcome');
+            Route::get('/category/{id}/livres', [CategorieController::class, 'showLivres'])->name('showLivres');
             // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
             // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
             // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

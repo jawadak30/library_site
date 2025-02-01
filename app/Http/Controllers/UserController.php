@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
+use App\Models\Livre;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,9 +13,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        $categories = Categorie::with('livres')->get();
+        $livres = Livre::with('categorie')->latest()->paginate(8);
+        return view('welcome', compact('categories','livres'));
     }
-
         // Display all users
         public function all_users()
         {

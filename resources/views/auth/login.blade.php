@@ -3,7 +3,7 @@
     @vite('resources/css/form.css')
 @endpush
 @section('header')
-    <x-header />
+    <x-header :categories="$categories" />
 @endsection
 @section('section')
 <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -48,7 +48,7 @@
         </div>
 
         <!-- Remember Me -->
-        <div class="block mt-4">
+        {{-- <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input
                     id="remember_me"
@@ -58,7 +58,7 @@
                 >
                 <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">Remember me</span>
             </label>
-        </div>
+        </div> --}}
 
         <!-- Actions -->
         <div class="flex items-center justify-between mt-6">

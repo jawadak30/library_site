@@ -338,6 +338,9 @@
     padding: 50px 30px;
     text-align: center;
   }
+  .img{
+    transition: none !important;
+  }
 
   .newsletter-header { margin-bottom: 20px; }
 
@@ -526,7 +529,7 @@
   .desktop-navigation-menu { display: none; }
 
   .header-main {
-    padding: 20px 0;
+    padding: 0px 0;
     border-bottom: 1px solid var(--cultured);
   }
 
@@ -674,8 +677,6 @@
 
   .menu-close-btn ion-icon { --ionicon-stroke-width: 50px; }
 
-  .mobile-menu-category-list { margin-bottom: 30px; }
-
   .menu-category .accordion-menu {
     width: 100%;
     display: -webkit-box;
@@ -735,7 +736,7 @@
   }
 
   .submenu-category-list.active {
-    max-height: 148px;
+    max-height: 100%;
     visibility: visible;
   }
 
@@ -836,6 +837,9 @@
        object-fit: cover;
     -o-object-position: right;
        object-position: right;
+  }
+  .dropdown-panel-list{
+    display: contents;
   }
 
   .banner-content {

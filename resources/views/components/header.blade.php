@@ -5,61 +5,6 @@
 @endpush
 <header>
 
-    <div class="header-top">
-
-      <div class="container">
-
-        <ul class="header-social-container">
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-
-        </ul>
-
-        <div class="header-top-actions">
-
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                languages
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                    <li>
-                        <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                            {{ $properties['native'] }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
     <div class="header-main">
 
       <div class="container">
@@ -68,7 +13,32 @@
           <img src="./assets/images/logo/logo.svg" alt="Anon's logo" width="120" height="36">
         </a>
 
-        <div class="header-search-container">
+        {{-- <nav class="desktop-navigation-menu">
+            <div class="container">
+                <ul class="desktop-menu-category-list">
+                    <li class="menu-category">
+                        <a href="{{ route('guest_welcome') }}" class="menu-title">Home</a>
+                    </li>
+
+                    <!-- Categories Dropdown -->
+                    <li class="menu-category">
+                        <a href="#" class="menu-title">Categories</a>
+
+                        <div class="dropdown-panel">
+                            <ul class="dropdown-panel-list">
+                                @foreach($categories as $category)
+                                    <li class="panel-list-item">
+                                        <a href="{{ route('category.livres', $category->id) }}">{{ $category->name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav> --}}
+
+        {{-- <div class="header-search-container">
 
           <input type="search" name="search" class="search-field" placeholder="Enter your product name...">
 
@@ -76,7 +46,8 @@
             <ion-icon name="search-outline"></ion-icon>
           </button>
 
-        </div>
+        </div> --}}
+
 
         <div class="header-user-actions">
 
@@ -93,277 +64,60 @@
 
         </div>
 
+        {{-- <div class="header-top-actions">
+
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  languages
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                      <li>
+                          <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                              {{ $properties['native'] }}
+                          </a>
+                      </li>
+                  @endforeach
+              </ul>
+            </div>
+
+          </div> --}}
+
       </div>
 
     </div>
 
     <nav class="desktop-navigation-menu">
-
-      <div class="container">
-
-        <ul class="desktop-menu-category-list">
-
-          <li class="menu-category">
-            <a href="{{ route('guest_welcome') }}" class="menu-title">Home</a>
-          </li>
-
-          <li class="menu-category">
-            <a href="#" class="menu-title">Categories</a>
-
-            <div class="dropdown-panel">
-
-              <ul class="dropdown-panel-list">
-
-                <li class="menu-title">
-                  <a href="#">Electronics</a>
+        <div class="container">
+            <ul class="desktop-menu-category-list">
+                <li class="menu-category">
+                    <a href="{{ route('guest_welcome') }}" class="menu-title">Home</a>
                 </li>
 
-                <li class="panel-list-item">
-                  <a href="#">Desktop</a>
+                <!-- Categories Dropdown -->
+                <li class="menu-category">
+                    <a href="#" class="menu-title">Categories</a>
+
+                    <div class="dropdown-panel">
+                        <ul class="dropdown-panel-list">
+                            @foreach($categories as $category)
+                                <li class="panel-list-item">
+                                    <a href="{{ route('showLivres', $category->id) }}">{{ $category->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Laptop</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Camera</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Tablet</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Headphone</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">
-                    <img src="./assets/images/electronics-banner-1.jpg" alt="headphone collection" width="250"
-                      height="119">
-                  </a>
-                </li>
-
-              </ul>
-
-              <ul class="dropdown-panel-list">
-
-                <li class="menu-title">
-                  <a href="#">Men's</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Formal</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Casual</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Sports</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Jacket</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Sunglasses</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">
-                    <img src="./assets/images/mens-banner.jpg" alt="men's fashion" width="250" height="119">
-                  </a>
-                </li>
-
-              </ul>
-
-              <ul class="dropdown-panel-list">
-
-                <li class="menu-title">
-                  <a href="#">Women's</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Formal</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Casual</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Perfume</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Cosmetics</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Bags</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">
-                    <img src="./assets/images/womens-banner.jpg" alt="women's fashion" width="250" height="119">
-                  </a>
-                </li>
-
-              </ul>
-
-              <ul class="dropdown-panel-list">
-
-                <li class="menu-title">
-                  <a href="#">Electronics</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Smart Watch</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Smart TV</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Keyboard</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Mouse</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">Microphone</a>
-                </li>
-
-                <li class="panel-list-item">
-                  <a href="#">
-                    <img src="./assets/images/electronics-banner-2.jpg" alt="mouse collection" width="250" height="119">
-                  </a>
-                </li>
-
-              </ul>
-
-            </div>
-          </li>
-
-          <li class="menu-category">
-            <a href="#" class="menu-title">Men's</a>
-
-            <ul class="dropdown-list">
-
-              <li class="dropdown-item">
-                <a href="#">Shirt</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="#">Shorts & Jeans</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="#">Safety Shoes</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="#">Wallet</a>
-              </li>
-
             </ul>
-          </li>
-
-          <li class="menu-category">
-            <a href="#" class="menu-title">Women's</a>
-
-            <ul class="dropdown-list">
-
-              <li class="dropdown-item">
-                <a href="#">Dress & Frock</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="#">Earrings</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="#">Necklace</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="#">Makeup Kit</a>
-              </li>
-
-            </ul>
-          </li>
-
-          <li class="menu-category">
-            <a href="#" class="menu-title">Jewelry</a>
-
-            <ul class="dropdown-list">
-
-              <li class="dropdown-item">
-                <a href="#">Earrings</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="#">Couple Rings</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="#">Necklace</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="#">Bracelets</a>
-              </li>
-
-            </ul>
-          </li>
-
-          <li class="menu-category">
-            <a href="#" class="menu-title">Perfume</a>
-
-            <ul class="dropdown-list">
-
-              <li class="dropdown-item">
-                <a href="#">Clothes Perfume</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="#">Deodorant</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="#">Flower Fragrance</a>
-              </li>
-
-              <li class="dropdown-item">
-                <a href="#">Air Freshener</a>
-              </li>
-
-            </ul>
-          </li>
-
-          <li class="menu-category">
-            <a href="#" class="menu-title">Blog</a>
-          </li>
-
-          <li class="menu-category">
-            <a href="#" class="menu-title">Hot Offers</a>
-          </li>
-
-        </ul>
-
-      </div>
-
+        </div>
     </nav>
 
-    <div class="mobile-bottom-navigation">
 
+
+    <div class="mobile-bottom-navigation">
+        {{-- <button class="action-btn" data-mobile-menu-open-btn>
+            <ion-icon name="menu-outline"></ion-icon>
+        </button> --}}
       <button class="action-btn">
         <ion-icon name="bag-handle-outline"></ion-icon>
 
@@ -385,222 +139,97 @@
 
     <nav class="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
 
-      <div class="menu-top">
-        <h2 class="menu-title">Menu</h2>
+        <div class="menu-top">
+          <h2 class="menu-title">Menu</h2>
 
-        <button class="menu-close-btn" data-mobile-menu-close-btn>
-          <ion-icon name="close-outline"></ion-icon>
-        </button>
-      </div>
-
-      <ul class="mobile-menu-category-list">
-
-        <li class="menu-category">
-          <a href="#" class="menu-title">Home</a>
-        </li>
-
-        <li class="menu-category">
-
-          <button class="accordion-menu" data-accordion-btn>
-            <p class="menu-title">Men's</p>
+          <button class="menu-close-btn" data-mobile-menu-close-btn>
+            <ion-icon name="close-outline"></ion-icon>
           </button>
+        </div>
 
-          <ul class="submenu-category-list" data-accordion>
+        <ul class="mobile-menu-category-list">
 
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Shirt</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Shorts & Jeans</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Safety Shoes</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Wallet</a>
-            </li>
-
-          </ul>
-
-        </li>
-
-        <li class="menu-category">
-
-          <button class="accordion-menu" data-accordion-btn>
-            <p class="menu-title">Women's</p>
-          </button>
-
-          <ul class="submenu-category-list" data-accordion>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Dress & Frock</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Earrings</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Necklace</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Makeup Kit</a>
-            </li>
-
-          </ul>
-
-        </li>
-
-        <li class="menu-category">
-
-          <button class="accordion-menu" data-accordion-btn>
-            <p class="menu-title">Jewelry</p>
-
-          </button>
-
-          <ul class="submenu-category-list" data-accordion>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Earrings</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Couple Rings</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Necklace</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Bracelets</a>
-            </li>
-
-          </ul>
-
-        </li>
-
-        <li class="menu-category">
-
-          <button class="accordion-menu" data-accordion-btn>
-            <p class="menu-title">Perfume</p>
-          </button>
-
-          <ul class="submenu-category-list" data-accordion>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Clothes Perfume</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Deodorant</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Flower Fragrance</a>
-            </li>
-
-            <li class="submenu-category">
-              <a href="#" class="submenu-title">Air Freshener</a>
-            </li>
-
-          </ul>
-
-        </li>
-
-        <li class="menu-category">
-          <a href="#" class="menu-title">Blog</a>
-        </li>
-
-        <li class="menu-category">
-          <a href="#" class="menu-title">Hot Offers</a>
-        </li>
-
-      </ul>
-
-      <div class="menu-bottom">
-
-        <ul class="menu-category-list">
+          <li class="menu-category">
+            <a href="{{ route('guest_welcome') }}" class="menu-title">Home</a>
+          </li>
+          <li class="menu-category">
+            <a href="{{ route('login') }}" class="menu-title">login</a>
+          </li>
+          <li class="menu-category">
+            <a href="{{ route('register') }}" class="menu-title">register</a>
+          </li>
 
           <li class="menu-category">
 
             <button class="accordion-menu" data-accordion-btn>
-              <p class="menu-title">Language</p>
+              <p class="menu-title">categories</p>
 
-              <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
+              <div>
+                <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+              </div>
             </button>
 
             <ul class="submenu-category-list" data-accordion>
 
-              <li class="submenu-category">
-                <a href="#" class="submenu-title">English</a>
-              </li>
-
-              <li class="submenu-category">
-                <a href="#" class="submenu-title">Espa&ntilde;ol</a>
-              </li>
-
-              <li class="submenu-category">
-                <a href="#" class="submenu-title">Fren&ccedil;h</a>
-              </li>
-
+                @foreach($categories as $category)
+                <li class="submenu-category">
+                    <a class="submenu-title" href="{{ route('showLivres', $category->id) }}">{{ $category->name }}</a>
+                </li>
+                @endforeach
             </ul>
 
           </li>
 
-          <li class="menu-category">
-            <button class="accordion-menu" data-accordion-btn>
-              <p class="menu-title">Currency</p>
-              <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
-            </button>
-
-            <ul class="submenu-category-list" data-accordion>
-              <li class="submenu-category">
-                <a href="#" class="submenu-title">USD &dollar;</a>
-              </li>
-
-              <li class="submenu-category">
-                <a href="#" class="submenu-title">EUR &euro;</a>
-              </li>
-            </ul>
-          </li>
-
         </ul>
 
-        <ul class="menu-social-container">
+        <div class="menu-bottom">
 
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </a>
-          </li>
+          <ul class="menu-category-list">
 
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
+            <li class="menu-category">
 
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
+              <button class="accordion-menu" data-accordion-btn>
+                <p class="menu-title">Language</p>
 
-          <li>
-            <a href="#" class="social-link">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
+                <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
+              </button>
 
-        </ul>
+              <ul class="submenu-category-list" data-accordion>
 
-      </div>
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                <li class="submenu-category">
+                    <a class="submenu-title" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                        {{ $properties['native'] }}
+                    </a>
+                </li>
+                @endforeach
 
-    </nav>
+              </ul>
+
+            </li>
+
+            <li class="menu-category">
+              <button class="accordion-menu" data-accordion-btn>
+                <p class="menu-title">Currency</p>
+                <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
+              </button>
+
+              <ul class="submenu-category-list" data-accordion>
+                <li class="submenu-category">
+                  <a href="#" class="submenu-title">USD &dollar;</a>
+                </li>
+
+                <li class="submenu-category">
+                  <a href="#" class="submenu-title">EUR &euro;</a>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </nav>
 
   </header>

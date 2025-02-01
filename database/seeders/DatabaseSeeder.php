@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Categorie::factory(5)->create()->each(function ($category) {
-            Livre::factory(10)->create(['categorie_id' => $category->id]);
+            Livre::factory(3)->create(['categorie_id' => $category->id]);
         });
 
         // Create users with profiles and reservations

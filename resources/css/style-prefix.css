@@ -2793,6 +2793,9 @@ footer {
     visibility: visible;
     pointer-events: all;
   }
+  .dropdown-panel-list{
+    display: contents;
+  }
 
   .dropdown-panel-list .menu-title a {
     color: var(--onyx);

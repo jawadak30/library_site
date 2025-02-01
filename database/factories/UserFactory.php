@@ -29,6 +29,7 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'password' => Hash::make('password'), // Default password
             'email_verified_at' => $this->faker->optional()->dateTime(),
+            'last_login' => $this->faker->optional()->dateTime() // Adding last_login field with optional timestamp
         ];
     }
 

@@ -95,7 +95,7 @@
           - SIDEBAR
         -->
 
-        <div class="sidebar  has-scrollbar" data-mobile-menu>
+        {{-- <div class="sidebar  has-scrollbar" data-mobile-menu>
 
           <div class="sidebar-category">
 
@@ -406,7 +406,7 @@
 
           </div>
 
-        </div>
+        </div> --}}
 
 
 
@@ -426,67 +426,42 @@
           -->
 
           <div class="product-main">
-
-            <h2 class="title">New Products</h2>
+            <h2 class="title">New Books</h2>
 
             <div class="product-grid">
+                @foreach ($livres as $livre)
+                    <div class="showcase">
+                        <div class="showcase-banner">
+                            <img src="{{ asset('storage/' . $livre->image1) }}" class="product-img default" width="300">
+                            <img src="{{ asset('storage/' . $livre->image2) }}" class="product-img hover" width="300">
 
-              <div class="showcase">
+                            <div class="showcase-actions">
+                                <button class="btn-action"><ion-icon name="eye-outline"></ion-icon></button>
+                                <button class="btn-action"><ion-icon name="bag-add-outline"></ion-icon></button>
+                            </div>
+                        </div>
 
-                <div class="showcase-banner">
-                  <img src="./assets/images/products/shorts-1.jpg" alt="Better Basics French Terry Sweatshorts"
-                    class="product-img default" width="300">
-                  <img src="./assets/images/products/shorts-2.jpg" alt="Better Basics French Terry Sweatshorts"
-                    class="product-img hover" width="300">
+                        <div class="showcase-content">
+                            <!-- Display the category name, or 'Uncategorized' if no category is assigned -->
+                            <a href="#" class="showcase-category">{{ $livre->categorie->nom ?? 'Uncategorized' }}</a>
+                            <h3><a href="#" class="showcase-title">{{ $livre->titre }}</a></h3>
 
-                  <p class="showcase-badge angle black">sale</p>
-
-                  <div class="showcase-actions">
-                    <button class="btn-action">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                    <button class="btn-action">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </button>
-
-                    <button class="btn-action">
-                      <ion-icon name="repeat-outline"></ion-icon>
-                    </button>
-
-                    <button class="btn-action">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="showcase-content">
-                  <a href="#" class="showcase-category">shorts</a>
-
-                  <h3>
-                    <a href="#" class="showcase-title">Better Basics French Terry Sweatshorts</a>
-                  </h3>
-
-                  <div class="showcase-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-
-                  <div class="price-box">
-                    <p class="price">$78.00</p>
-                    <del>$85.00</del>
-                  </div>
-
-                </div>
-
-              </div>
-
+                            <div class="price-box">
+                                <p class="price">{{ rand(10, 50) }}€</p>
+                                <del>{{ rand(51, 80) }}€</del>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
 
-          </div>
+            <!-- Pagination -->
+            <div class="pagination-links">
+                {{ $livres->links() }}
+            </div>
+        </div>
+
+
 
         </div>
 
