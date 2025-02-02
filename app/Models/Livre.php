@@ -31,4 +31,6 @@ class Livre extends Model
     {
         return $this->belongsToMany(Reservation::class, 'livre_reservation', 'livre_id', 'reservation_id');
     }
+
+
 }

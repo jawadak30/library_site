@@ -25,6 +25,11 @@ Route::group(
 
             // Add to cart for guests
             Route::post('/add-to-cart', [UserController::class, 'addToCart'])->name('addToCart');
+            Route::get('/book/{id}', [UserController::class, 'guest_book'])->name('guest_book');
+            Route::get('/cart', [UserController::class, 'cart'])->name('cart');
+            Route::post('/cart/remove', [UserController::class, 'removeFromCart'])->name('removeFromCart');
+            Route::post('/reserve-books', [ReservationController::class, 'reserveBooks'])->name('guest.reserveBooks'); // Renamed for guests
+
 
             // Redirect to authentication when attempting to make a reservation
             Route::get('/checkout', [UserController::class, 'checkout'])->name('guest_checkout');
@@ -37,11 +42,16 @@ Route::group(
             Route::get('/', [UserController::class, 'index'])->name('welcome');
             Route::get('/category/{id}/livres', [CategorieController::class, 'showLivres_user'])->name('showLivres_user');
             Route::post('/reserve-books', [UserController::class, 'reserveBooks'])->name('reserveBooks');
+            // Delete book from reservation
+            Route::delete('/reservations/{reservation}/deleteBook/{book}', [ReservationController::class, 'deleteBook'])->name('reservations.deleteBook');
+// Make sure to define the route that accepts both reservation and book (livre) parameters
+            Route::get('/reservations/{reservation}/update/{book}', [ReservationController::class, 'showUpdateEmpruntForm'])->name('updateEmpruntDate');
+            Route::put('/reservations/{reservation}/update-emprunt-date/{book}', [ReservationController::class, 'updateEmpruntDate'])->name('reservations_updateEmpruntDate');
 
-
-            // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-            // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-            // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+            Route::get('/dashboard', [ProfileController::class, 'index'])->name('dashboard');
+            Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+            Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+            Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
             Route::fallback(function(){
                 return redirect()->route('welcome');
             });

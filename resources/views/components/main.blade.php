@@ -106,7 +106,7 @@
                       <div class="showcase-actions">
 
 
-                        <a class="btn-action view-book" href=""><ion-icon name="eye-outline"></ion-icon></a>
+                        <a class="btn-action view-book" href="{{ route('guest_book',$livre->id) }}"><ion-icon name="eye-outline"></ion-icon></a>
 
                         <form action="{{ route('addToCart') }}" method="POST">
                             @csrf
@@ -119,8 +119,8 @@
                     </div>
 
                     <div class="showcase-content">
-                        <a href="#" class="showcase-category">{{ $livre->categorie->name }}</a>
-                        <h3><a href="#" class="showcase-title">{{ $livre->titre }}</a></h3>
+                        <a href="#" class="showcase-category">category : {{ $livre->categorie->name }}</a>
+                        <h3><a href="#" class="showcase-title">title : {{ $livre->titre }}</a></h3>
 
 
                     </div>

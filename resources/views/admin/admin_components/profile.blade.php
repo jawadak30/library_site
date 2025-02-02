@@ -37,7 +37,8 @@
                                     <!-- Display Last Login Time -->
                                     <p class="mb-1">
                                         <strong>Last Login:</strong>
-                                        {{ $user->last_login ? $user->last_login->format('Y-m-d H:i:s') : 'Never' }}
+                                        {{ $user->last_login ? \Carbon\Carbon::parse($user->last_login)->format('Y-m-d H:i') : 'Never' }}
+
                                     </p>
 
                                     <!-- Display Account Creation Time -->

@@ -25,6 +25,7 @@ class Reservation extends Model
         return $this->belongsTo(User::class);
     }
 
+
     public function livres()
     {
         return $this->belongsToMany(Livre::class, 'livre_reservation', 'reservation_id', 'livre_id');

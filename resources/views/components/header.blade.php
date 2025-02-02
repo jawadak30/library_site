@@ -8,10 +8,17 @@
     <div class="header-main">
 
       <div class="container">
+        @auth
+        <a href="{{ route('welcome') }}" class="header-logo">
+            <img src="{{ asset('images_site/logo.jpg') }}" alt="Anon's logo" width="70" height="36">
+          </a>
+        @endauth
+        @guest
 
         <a href="{{ route('guest_welcome') }}" class="header-logo">
-          <img src="{{ asset('images_site/logo.jpg') }}" alt="Anon's logo" width="70" height="36">
-        </a>
+            <img src="{{ asset('images_site/logo.jpg') }}" alt="Anon's logo" width="70" height="36">
+          </a>
+        @endguest
 
         {{-- <nav class="desktop-navigation-menu">
             <div class="container">
@@ -50,17 +57,29 @@
 
 
         <div class="header-user-actions">
+            {{-- @if (auth()->user()->isUser())
+            <a href="{{ route('userdashboard') }}" class="action-btn"><i class="fa-regular fa-user"></i></a>
+            @endif --}}
+            @auth
+                <a href="{{ route('dashboard') }}" class="action-btn"><i class="fa-regular fa-user"></i></a>
+            @endauth
+            @guest
+                <a href="{{ route('register') }}" class="action-btn"><i class="fa-regular fa-user"></i></a>
+            @endguest
 
-            <a href="{{ route('register') }}" class="action-btn"><i class="fa-regular fa-user"></i></a>
 
           {{-- <button class="action-btn">
             <ion-icon name="person-outline"></ion-icon>
           </button> --}}
 
-          <button class="action-btn">
+        <a class="action-btn" href="{{ route('cart') }}">
             <ion-icon name="bag-handle-outline"></ion-icon>
             <span class="count">{{ session()->has('cart') ? count(session('cart')) : 0 }}</span>
-          </button>
+        </a>
+          {{-- <button class="action-btn">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span class="count">{{ session()->has('cart') ? count(session('cart')) : 0 }}</span>
+          </button> --}}
 
         </div>
 
@@ -118,13 +137,11 @@
         {{-- <button class="action-btn" data-mobile-menu-open-btn>
             <ion-icon name="menu-outline"></ion-icon>
         </button> --}}
-      <button class="action-btn">
-        <ion-icon name="bag-handle-outline"></ion-icon>
-        <span class="count">{{ session()->has('cart') ? count(session('cart')) : 0 }}</span>
+        <a class="action-btn" href="{{ route('cart') }}">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span class="count">{{ session()->has('cart') ? count(session('cart')) : 0 }}</span>
+        </a>
 
-
-
-      </button>
       <a class="action-btn" href="{{ route('guest_welcome') }}">
         <ion-icon name="home-outline"></ion-icon>
         </a>

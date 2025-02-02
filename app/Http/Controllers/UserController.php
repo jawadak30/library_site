@@ -12,24 +12,67 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
-// UserController.php
-public function addToCart(Request $request)
-{
-    $bookId = $request->book_id;
+    public function addToCart(Request $request)
+    {
+        $bookId = $request->book_id;
 
-    // Retrieve the current cart session or create an empty array
-    $cart = session()->get('cart', []);
+        // Retrieve the current cart session or create an empty array
+        $cart = session()->get('cart', []);
 
-    // Only add the book ID if it’s not already in the cart
-    if (!in_array($bookId, $cart)) {
+        // Check if the book is already in the cart
+        if (in_array($bookId, $cart)) {
+            return back()->with('error', 'Book is already in the cart!');
+        }
+
+        // Add the book to the cart
         $cart[] = $bookId;
         session(['cart' => $cart]); // Update session
         session()->save(); // Ensure session is saved
+
+        // Redirect back with a success message
+        return back()->with('success', 'Book added to cart!');
+    }
+    public function cart(){
+        // $cart = session()->get('cart', []);
+
+        // // Retrieve full book objects from the database using stored IDs
+        // $livres = Livre::whereIn('id', array_keys($cart))->get();
+        $categories = Categorie::with('livres')->get();
+        return view('components.cart',compact('categories'));
     }
 
+// CartController.php
+
+public function removeFromCart(Request $request)
+{
+    $bookId = $request->book_id;
+
+    // Retrieve the current cart session
+    $cart = session()->get('cart', []);
+
+    // Remove the book ID from the cart if it exists
+    if (($key = array_search($bookId, $cart)) !== false) {
+        unset($cart[$key]);
+    }
+
+    // Update the session with the modified cart
+    session()->put('cart', $cart);
+
+    // Optionally, save the session
+    session()->save();
+
     // Redirect back with a success message
-    return back()->with('success', 'Book added to cart!');
+    return back()->with('success', 'Book removed from cart!');
 }
+
+
+
+    public function guest_book($id){
+        $categories = Categorie::with('livres')->get();
+        $livre = livre::findOrFail($id);
+        return view('components.book_review', compact('categories','livre'));
+    }
+
 
     public function checkout()
     {
