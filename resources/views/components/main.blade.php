@@ -128,6 +128,9 @@
                   </div>
                 @endforeach
               </div>
+              <div class="pagination-links">
+                {{ $livres->links() }}
+            </div>
 
             </div>
 
