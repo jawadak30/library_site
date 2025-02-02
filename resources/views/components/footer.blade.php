@@ -164,7 +164,7 @@
       <div class="container">
 
         <p class="copyright">
-          Copyright &copy; <a href="#">Anon</a> all rights reserved.
+          Copyright &copy; <a href="#">e library</a> all rights reserved.
         </p>
 
       </div>

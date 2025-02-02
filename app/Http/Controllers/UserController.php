@@ -11,6 +11,36 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
+// UserController.php
+public function addToCart(Request $request)
+{
+    $bookId = $request->book_id;
+
+    // Retrieve the current cart session or create an empty array
+    $cart = session()->get('cart', []);
+
+    // Only add the book ID if it’s not already in the cart
+    if (!in_array($bookId, $cart)) {
+        $cart[] = $bookId;
+        session(['cart' => $cart]); // Update session
+        session()->save(); // Ensure session is saved
+    }
+
+    // Redirect back with a success message
+    return back()->with('success', 'Book added to cart!');
+}
+
+    public function checkout()
+    {
+        if (auth()->check()) {
+            return redirect()->route('reserveBooks'); // Authenticated users go to reserve
+        }
+
+        return redirect()->route('login')->with('message', 'Please log in to complete your reservation.');
+    }
+
+
     public function index()
     {
         $categories = Categorie::with('livres')->get();

@@ -19,16 +19,26 @@ Route::group(
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){
         Route::middleware('guest')->group(function () {
+            // Show books and categories
             Route::get('/', [UserController::class, 'index'])->name('guest_welcome');
             Route::get('/category/{id}/livres', [CategorieController::class, 'showLivres'])->name('showLivres');
-            Route::fallback(function(){
-                return redirect()->route('welcome');
+
+            // Add to cart for guests
+            Route::post('/add-to-cart', [UserController::class, 'addToCart'])->name('addToCart');
+
+            // Redirect to authentication when attempting to make a reservation
+            Route::get('/checkout', [UserController::class, 'checkout'])->name('guest_checkout');
+            Route::fallback(function() {
+                return redirect()->route('guest_welcome');
             });
         });
 
         Route::prefix('/user')->middleware(['auth','user'])->group(function () {
             Route::get('/', [UserController::class, 'index'])->name('welcome');
-            Route::get('/category/{id}/livres', [CategorieController::class, 'showLivres'])->name('showLivres');
+            Route::get('/category/{id}/livres', [CategorieController::class, 'showLivres_user'])->name('showLivres_user');
+            Route::post('/reserve-books', [UserController::class, 'reserveBooks'])->name('reserveBooks');
+
+
             // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
             // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
             // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

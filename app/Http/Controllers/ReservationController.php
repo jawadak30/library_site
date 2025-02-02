@@ -1,10 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Livre;
 use App\Models\Reservation;
 use App\Models\User;
-use App\Models\Livre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -22,6 +23,29 @@ class ReservationController extends Controller
         $users = User::where('role', 'user')->get();
         $books = Livre::all();
         return view('admin.reservations.add_reservation', compact('users', 'books'));
+    }
+
+
+    public function reserveBooks()
+    {
+        $user = auth()->user();
+        $cart = session('cart', []);
+
+        if (empty($cart)) {
+            return back()->with('error', 'Your cart is empty.');
+        }
+
+        foreach ($cart as $bookId) {
+            Reservation::create([
+                'user_id' => $user->id,
+                'book_id' => $bookId,
+                'status' => 'pending',
+            ]);
+        }
+
+        session()->forget('cart'); // Clear session after reserving
+
+        return back()->with('message', 'Books reserved successfully!');
     }
 
     // Store a new reservation

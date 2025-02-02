@@ -533,7 +533,12 @@
     border-bottom: 1px solid var(--cultured);
   }
 
-  .header-logo { margin-bottom: 20px; }
+  /* .header-logo { margin-bottom: 20px; } */
+  .dropdown-toggle{
+    background: inherit;
+    border: none;
+    color: black;
+  }
 
   .header-logo img { margin: auto; }
 
@@ -833,8 +838,8 @@
   .slider-item .banner-img {
     width: 100%;
     height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
+    -o-object-fit: fill;
+       object-fit: fill;
     -o-object-position: right;
        object-position: right;
   }

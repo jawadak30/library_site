@@ -9,8 +9,8 @@
 
       <div class="container">
 
-        <a href="#" class="header-logo">
-          <img src="./assets/images/logo/logo.svg" alt="Anon's logo" width="120" height="36">
+        <a href="{{ route('guest_welcome') }}" class="header-logo">
+          <img src="{{ asset('images_site/logo.jpg') }}" alt="Anon's logo" width="70" height="36">
         </a>
 
         {{-- <nav class="desktop-navigation-menu">
@@ -59,12 +59,12 @@
 
           <button class="action-btn">
             <ion-icon name="bag-handle-outline"></ion-icon>
-            <span class="count">0</span>
+            <span class="count">{{ session()->has('cart') ? count(session('cart')) : 0 }}</span>
           </button>
 
         </div>
 
-        {{-- <div class="header-top-actions">
+        <div class="header-top-actions">
 
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -81,7 +81,7 @@
               </ul>
             </div>
 
-          </div> --}}
+          </div>
 
       </div>
 
@@ -120,8 +120,10 @@
         </button> --}}
       <button class="action-btn">
         <ion-icon name="bag-handle-outline"></ion-icon>
+        <span class="count">{{ session()->has('cart') ? count(session('cart')) : 0 }}</span>
 
-        <span class="count">0</span>
+
+
       </button>
       <a class="action-btn" href="{{ route('guest_welcome') }}">
         <ion-icon name="home-outline"></ion-icon>
