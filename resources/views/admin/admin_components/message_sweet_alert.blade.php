@@ -9,11 +9,10 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         Swal.fire({
-            icon: 'success', // Make sure this matches your intent
+            icon: 'success',
             title: 'Success!',
             text: '{{ session('message') }}',
         }).then(() => {
-            // Clear session message from history
             window.history.replaceState({}, document.title, window.location.pathname);
         });
     });

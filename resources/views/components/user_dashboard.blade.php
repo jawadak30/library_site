@@ -111,12 +111,6 @@
             });
         });
     });
-
-    // $(document).ready(function() {
-    //     $('#datatable').DataTable({
-    //         scrollX: true, // Enable horizontal scroll
-    //     });
-    // });
 </script>
 
 @endsection

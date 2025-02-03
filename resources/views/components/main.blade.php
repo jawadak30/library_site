@@ -149,54 +149,6 @@
 
       </div>
       </div>
-    {{-- <div class="product-container">
-
-      <div class="container">
-        <div class="product-box">
-          <!--
-            - PRODUCT GRID
-          -->
-
-          <div class="product-main">
-            <h2 class="title">New Books</h2>
-                @foreach ($livres as $livre)
-                    <div class="showcase">
-                        <div class="showcase-banner">
-                            <img src="{{ asset('storage/' . $livre->image1) }}" class="product-img default" width="300">
-                            <img src="{{ asset('storage/' . $livre->image2) }}" class="product-img hover" width="300">
-
-                            <div class="showcase-actions">
-                                <!-- Eye Button - View Book -->
-                                <a class="btn-action view-book" href=""><ion-icon name="eye-outline"></ion-icon></a>
-
-                                <form action="{{ route('addToCart') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="book_id" value="{{ $livre->id }}">
-                                    <button type="submit" class="btn-action"><ion-icon name="bag-add-outline"></ion-icon></button>
-                                </form>
-                            </div>
-
-                        </div>
-
-                        <div class="showcase-content">
-                            <!-- Display the category name, or 'Uncategorized' if no category is assigned -->
-                            <a href="#" class="showcase-category">{{ $livre->categorie->name }}</a>
-                            <h3><a href="#" class="showcase-title">{{ $livre->titre }}</a></h3>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-            <!-- Pagination -->
-            <div class="pagination-links">
-                {{ $livres->links() }}
-            </div>
-        </div>
-
-
-
-        </div>
-    </div> --}}
 
 
     <div class="blog">

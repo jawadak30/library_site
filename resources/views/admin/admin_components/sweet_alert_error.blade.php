@@ -14,7 +14,6 @@
             title: 'Oops...',
             text: '{{ session('error') }}',
         }).then(() => {
-            // Remove the error message from session history
             window.history.replaceState({}, document.title, window.location.pathname);
         });
     });

@@ -13,7 +13,6 @@
             title: 'Success!',
             text: '{{ session('success') }}',
         }).then(() => {
-            // Clear session success message using JavaScript
             window.history.replaceState({}, document.title, window.location.pathname);
         });
     });

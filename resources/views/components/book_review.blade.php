@@ -49,10 +49,10 @@
 
 
 
-                </div> <!-- End showcase-content -->
-            </div> <!-- End showcase -->
-        </div> <!-- End showcase-container -->
-    </div> <!-- End showcase-wrapper -->
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 

@@ -28,9 +28,6 @@
             @endguest
 
 
-          {{-- <button class="action-btn">
-            <ion-icon name="person-outline"></ion-icon>
-          </button> --}}
           @auth
             <a class="action-btn" href="{{ route('cart_auth') }}">
                 <ion-icon name="bag-handle-outline"></ion-icon>
@@ -43,10 +40,6 @@
                 <span class="count">{{ session()->has('cart') ? count(session('cart')) : 0 }}</span>
             </a>
           @endguest
-          {{-- <button class="action-btn">
-            <ion-icon name="bag-handle-outline"></ion-icon>
-            <span class="count">{{ session()->has('cart') ? count(session('cart')) : 0 }}</span>
-          </button> --}}
 
         </div>
 
@@ -108,9 +101,6 @@
 
 
     <div class="mobile-bottom-navigation">
-        {{-- <button class="action-btn" data-mobile-menu-open-btn>
-            <ion-icon name="menu-outline"></ion-icon>
-        </button> --}}
         @auth
         <a class="action-btn" href="{{ route('cart_auth') }}">
             <ion-icon name="bag-handle-outline"></ion-icon>
@@ -129,10 +119,6 @@
       <a class="action-btn" href="{{ route('guest_welcome') }}">
         <ion-icon name="home-outline"></ion-icon>
         </a>
-
-      {{-- <button class="action-btn">
-        <ion-icon name="home-outline"></ion-icon>
-      </button> --}}
 
       <button class="action-btn" data-mobile-menu-open-btn>
         <ion-icon name="grid-outline"></ion-icon>
@@ -231,20 +217,6 @@
                 @auth
                     <a class="menu-title" href="{{ route('dashboard') }}" class="action-btn">Profile</a>
                 @endauth
-              {{-- <button class="accordion-menu" data-accordion-btn>
-                <p class="menu-title">Currency</p>
-                <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
-              </button>
-
-              <ul class="submenu-category-list" data-accordion>
-                <li class="submenu-category">
-                  <a href="#" class="submenu-title">USD &dollar;</a>
-                </li>
-
-                <li class="submenu-category">
-                  <a href="#" class="submenu-title">EUR &euro;</a>
-                </li>
-              </ul> --}}
             </li>
 
           </ul>

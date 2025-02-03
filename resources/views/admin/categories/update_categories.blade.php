@@ -22,14 +22,11 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <!-- Display general form errors (if any) -->
-                        <!-- In your update form -->
 
                         <form action="{{ route('update_category', $category->id) }}" method="POST">
                             @csrf
                             @method('PATCH')
 
-                            <!-- Form fields -->
                             <div class="form-group">
                                 <label for="name">Category Name</label>
                                 <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $category->name) }}">
