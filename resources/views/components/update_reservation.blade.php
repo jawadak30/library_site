@@ -33,7 +33,7 @@
                     <label for="dateEmprunt">Loan Date</label>
                     <input type="date" name="dateEmprunt" id="dateEmprunt" class="form-control"
                            value="{{ old('dateEmprunt', $reservation->dateEmprunt ?? now()->format('Y-m-d')) }}"
-                           min="{{ now()->format('Y-m-d') }}" required>
+                           min="{{ now()->format('Y-m-d') }}" >
                 </div>
 
 

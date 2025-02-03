@@ -67,7 +67,7 @@ public function removeFromCart(Request $request)
 
 
 
-    public function guest_book($id){
+    public function book($id){
         $categories = Categorie::with('livres')->get();
         $livre = livre::findOrFail($id);
         return view('components.book_review', compact('categories','livre'));

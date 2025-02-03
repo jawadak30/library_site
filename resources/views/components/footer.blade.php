@@ -36,33 +36,6 @@
 
         </ul>
 
-        <ul class="footer-nav-list">
-
-          <li class="footer-nav-item">
-            <h2 class="nav-title">Products</h2>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Prices drop</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">New products</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Best sales</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Contact us</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Sitemap</a>
-          </li>
-
-        </ul>
 
         <ul class="footer-nav-list">
 
@@ -120,7 +93,7 @@
 
         </ul>
 
-        <ul class="footer-nav-list">
+        {{-- <ul class="footer-nav-list">
 
           <li class="footer-nav-item">
             <h2 class="nav-title">Contact</h2>
@@ -152,7 +125,7 @@
             <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
           </li>
 
-        </ul>
+        </ul> --}}
 
 
       </div>

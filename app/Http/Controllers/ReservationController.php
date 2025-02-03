@@ -30,65 +30,66 @@ class ReservationController extends Controller
 
 // ReservationController.php
 
-public function reserveBooks()
-{
-    // Check if the user is authenticated
-    if (!auth()->check()) {
-        return redirect()->route('login')->with('message', 'Please log in to complete your reservation.');
-    }
-
-    // User is authenticated, proceed with the reservation
-    $user = auth()->user();
-    $cart = session('cart', []); // Retrieve the cart from the session
-
-    if (empty($cart)) {
-        return back()->with('error', 'Your cart is empty.');
-    }
-
-    $reservedBooks = []; // To store books that were already reserved
-    $newReservations = []; // To store books that are being newly reserved
-
-    // Loop through each book in the cart
-    foreach ($cart as $bookId) {
-        // Check if the user has already reserved this book
-        $existingReservation = Reservation::where('user_id', $user->id)
-                                          ->where('livre_id', $bookId)
-                                          ->exists();
-
-        if ($existingReservation) {
-            // If the book is already reserved, add it to the reservedBooks array
-            $reservedBooks[] = $bookId;
-        } else {
-            // If the book has not been reserved, add it to the newReservations array
-            $newReservations[] = $bookId;
+    public function reserveBooks()
+    {
+        // Check if the user is authenticated
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('message', 'Please log in to complete your reservation.');
         }
+
+        // User is authenticated, proceed with the reservation
+        $user = auth()->user();
+        $cart = session('cart', []); // Retrieve the cart from the session
+
+        if (empty($cart)) {
+            return back()->with('error', 'Your cart is empty.');
+        }
+
+        $reservedBooks = []; // To store books that were already reserved
+        $newReservations = []; // To store books that are being newly reserved
+
+        // Loop through each book in the cart
+        foreach ($cart as $bookId) {
+            // Check if the user has already reserved this book
+            $existingReservation = Reservation::where('user_id', $user->id)
+                                            ->where('livre_id', $bookId)
+                                            ->exists();
+
+            if ($existingReservation) {
+                // If the book is already reserved, add it to the reservedBooks array
+                $reservedBooks[] = $bookId;
+            } else {
+                // If the book has not been reserved, add it to the newReservations array
+                $newReservations[] = $bookId;
+            }
+        }
+
+        // Now, create reservations for the books that were not reserved yet
+        foreach ($newReservations as $bookId) {
+            Reservation::create([
+                'user_id' => $user->id,
+                'livre_id' => $bookId,
+                'dateEmprunt' => now()->toDateString(), // Current date
+                'heureEmprunt' => now()->toTimeString(), // Current time
+                'dateReservation' => now()->toDateString(), // Current date
+                'etat' => 'en attente', // Default status
+            ]);
+        }
+
+        // Clear the cart after reserving
+        session()->forget('cart');
+
+        // Prepare the message
+        $message = count($newReservations) . ' book(s) reserved successfully!';
+
+        // If there are any reserved books, include that information
+        if (count($reservedBooks) > 0) {
+            $message = ' Some books were already reserved and were skipped.';
+        }
+        // return redirect()->route('');
+
+        return back()->with('message', $message);
     }
-
-    // Now, create reservations for the books that were not reserved yet
-    foreach ($newReservations as $bookId) {
-        Reservation::create([
-            'user_id' => $user->id,
-            'livre_id' => $bookId,
-            'dateEmprunt' => now()->toDateString(), // Current date
-            'heureEmprunt' => now()->toTimeString(), // Current time
-            'dateReservation' => now()->toDateString(), // Current date
-            'etat' => 'en attente', // Default status
-        ]);
-    }
-
-    // Clear the cart after reserving
-    session()->forget('cart');
-
-    // Prepare the message
-    $message = count($newReservations) . ' book(s) reserved successfully!';
-
-    // If there are any reserved books, include that information
-    if (count($reservedBooks) > 0) {
-        $message .= ' Some books were already reserved and were skipped.';
-    }
-
-    return back()->with('message', $message);
-}
 
 
 

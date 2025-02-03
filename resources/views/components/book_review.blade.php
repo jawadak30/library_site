@@ -32,11 +32,21 @@
                         </div>
                     </div>
 
-                    <form action="{{ route('addToCart') }}" method="POST">
+                    @auth
+                        <form action="{{ route('addToCart_user') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="book_id" value="{{ $livre->id }}">
+                            <button type="submit" class="add-cart-btn">add to Cart</button>
+                        </form>
+                    @endauth
+                    @guest
+                    <form action="{{ route('addToCart_guest') }}" method="POST">
                         @csrf
                         <input type="hidden" name="book_id" value="{{ $livre->id }}">
                         <button type="submit" class="add-cart-btn">add to Cart</button>
                     </form>
+                    @endguest
+
 
 
                 </div> <!-- End showcase-content -->

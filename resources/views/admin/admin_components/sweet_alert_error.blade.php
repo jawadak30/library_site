@@ -8,10 +8,15 @@
 @endpush
 @if(session('error'))
 <script>
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: {!! json_encode(session('error')) !!},
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '{{ session('error') }}',
+        }).then(() => {
+            // Remove the error message from session history
+            window.history.replaceState({}, document.title, window.location.pathname);
+        });
     });
 </script>
 @endif

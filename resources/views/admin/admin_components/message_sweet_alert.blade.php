@@ -5,20 +5,21 @@
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endpush
-@if(session('success'))
+@if(session('message'))
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         Swal.fire({
-            icon: 'success',
+            icon: 'success', // Make sure this matches your intent
             title: 'Success!',
-            text: '{{ session('success') }}',
+            text: '{{ session('message') }}',
         }).then(() => {
-            // Clear session success message using JavaScript
+            // Clear session message from history
             window.history.replaceState({}, document.title, window.location.pathname);
         });
     });
 </script>
 @endif
+
 
 
 @push('scripts')

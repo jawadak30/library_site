@@ -26,6 +26,7 @@
 
   @include('admin.admin_components.sweet_alert_success')
   @include('admin.admin_components.sweet_alert_error')
+  @include('admin.admin_components.message_sweet_alert')
 
 
 </body>

@@ -104,15 +104,24 @@
 
 
                       <div class="showcase-actions">
+                        @auth
+                            <a class="btn-action view-book" href="{{ route('auth_book',$livre->id) }}"><ion-icon name="eye-outline"></ion-icon></a>
+                            <form action="{{ route('addToCart_user') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="book_id" value="{{ $livre->id }}">
+                                <button type="submit" class="btn-action"><ion-icon name="bag-add-outline"></ion-icon></button>
+                            </form>
+                        @endauth
+                        @guest
+                            <a class="btn-action view-book" href="{{ route('guest_book',$livre->id) }}"><ion-icon name="eye-outline"></ion-icon></a>
+                            <form action="{{ route('addToCart_guest') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="book_id" value="{{ $livre->id }}">
+                                <button type="submit" class="btn-action"><ion-icon name="bag-add-outline"></ion-icon></button>
+                            </form>
+                        @endguest
 
 
-                        <a class="btn-action view-book" href="{{ route('guest_book',$livre->id) }}"><ion-icon name="eye-outline"></ion-icon></a>
-
-                        <form action="{{ route('addToCart') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="book_id" value="{{ $livre->id }}">
-                            <button type="submit" class="btn-action"><ion-icon name="bag-add-outline"></ion-icon></button>
-                        </form>
 
                       </div>
 

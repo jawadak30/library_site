@@ -86,9 +86,9 @@ class AuthenticatedSessionController extends Controller
             // Flash the message to the session
             session()->flash('message', $message);
         }
-
         // Redirect the user based on where they should go after login
         return $user->redirectAuthUser();
+
     }
 
 

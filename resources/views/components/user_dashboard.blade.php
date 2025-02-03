@@ -13,52 +13,57 @@
 @section('section')
 <div class="container mt-4">
     <div class="card shadow">
-        <div class="card-header bg-primary text-white">
-            <h4 class="mb-0"><i class="fas fa-book"></i> My Reserved Books</h4>
+        <div class="card-header d-flex justify-content-between">
+            <div class="header-title">
+                <h4 class="card-title">My Reserved Books</h4>
+            </div>
         </div>
         <div class="card-body">
-            <table id="datatable" class="display">
-                <thead>
-                    <tr>
-                        <th>Book Title</th>
-                        <th>Author</th>
-                        <th>Edition Date</th>
-                        <th>Category</th>
-                        <th>Reservation Date</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($reservations as $reservation)
-                    @foreach($reservation->livres as $book)
-
+            <div class="custom-datatable-entries">
+                <!-- Reserved Books Table (using classes from the first table) -->
+                <table id="datatable" class="table table-striped" data-toggle="data-table">
+                    <thead>
                         <tr>
-                            <td>{{ $book->titre }}</td>
-                            <td>{{ $book->auteur }}</td>
-                            <td>{{ $book->date_edition }}</td>
-                            <td>{{ $book->categorie->name ?? 'No category' }}</td>
-                            <td>{{ $reservation->dateReservation ?? 'N/A' }}</td>
-                            <td>{{ ucfirst($reservation->etat) ?? 'N/A' }}</td>
-                            <td>
-                                <form action="{{ route('reservations.deleteBook', ['reservation' => $reservation->id, 'book' => $book->id]) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete Book</button>
-                                </form>
-                                <a href="{{ route('updateEmpruntDate', ['reservation' => $reservation->id, 'book' => $book->id]) }}" class="btn btn-warning">
-                                    Update Date
-                                </a>
-                            </td>
+                            <th>Book Title</th>
+                            <th>Author</th>
+                            <th>Edition Date</th>
+                            <th>Category</th>
+                            <th>Reservation Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
                         </tr>
-                    @endforeach
-                @endforeach
+                    </thead>
+                    <tbody>
+                        @foreach($reservations as $reservation)
+                        @foreach($reservation->livres as $book)
 
-                </tbody>
-            </table>
+                            <tr>
+                                <td>{{ $book->titre }}</td>
+                                <td>{{ $book->auteur }}</td>
+                                <td>{{ $book->date_edition }}</td>
+                                <td>{{ $book->categorie->name ?? 'No category' }}</td>
+                                <td>{{ $reservation->dateReservation ?? 'N/A' }}</td>
+                                <td>{{ ucfirst($reservation->etat) ?? 'N/A' }}</td>
+                                <td>
+                                    <form action="{{ route('reservations.deleteBook', ['reservation' => $reservation->id, 'book' => $book->id]) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete Book</button>
+                                    </form>
+                                    <a href="{{ route('updateEmpruntDate', ['reservation' => $reservation->id, 'book' => $book->id]) }}" class="btn btn-warning btn-sm">
+                                        Update Date
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+
 
 <!-- Include DataTables -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
@@ -68,6 +73,10 @@
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 
 <script>
+    new DataTable('#datatable', {
+        scrollX: true,  // Enable horizontal scroll
+  // Set default number of rows per page
+    });
     // Wait for the document to be ready before adding event listeners
     document.addEventListener("DOMContentLoaded", function() {
         // Get all the buttons that open the modal
@@ -102,6 +111,12 @@
             });
         });
     });
+
+    // $(document).ready(function() {
+    //     $('#datatable').DataTable({
+    //         scrollX: true, // Enable horizontal scroll
+    //     });
+    // });
 </script>
 
 @endsection

@@ -12,6 +12,7 @@ class CategorieController extends Controller
     // Display all categories
     public function all_categories()
     {
+
         $categories = Categorie::with('livres')->get();
         return view('admin.categories.all_categories', compact('categories'));
     }

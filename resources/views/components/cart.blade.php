@@ -42,17 +42,34 @@
                             <img src="{{ asset('storage/' . $livre->image1) }}" alt="{{ $livre->titre }}" width="300" class="product-img default">
                             <img src="{{ asset('storage/' . $livre->image2) }}" alt="{{ $livre->titre }}" width="300" class="product-img hover">
                             <div class="showcase-actions">
-                                <a class="btn-action view-book" href="{{ route('guest_book', $livre->id) }}">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </a>
 
-                                <form action="{{ route('removeFromCart') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="book_id" value="{{ $livre->id }}">
-                                    <button type="submit" class="btn-action">
-                                        <ion-icon name="trash-outline"></ion-icon>
-                                    </button>
-                                </form>
+
+                                @auth
+                                    <a class="btn-action view-book" href="{{ route('auth_book', $livre->id) }}">
+                                        <ion-icon name="eye-outline"></ion-icon>
+                                    </a>
+                                    <form action="{{ route('removeFromCart_user') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="book_id" value="{{ $livre->id }}">
+                                        <button type="submit" class="btn-action">
+                                            <ion-icon name="trash-outline"></ion-icon>
+                                        </button>
+                                    </form>
+                                @endauth
+
+                                @guest
+                                    <a class="btn-action view-book" href="{{ route('guest_book', $livre->id) }}">
+                                        <ion-icon name="eye-outline"></ion-icon>
+                                    </a>
+                                    <form action="{{ route('removeFromCart_guest') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="book_id" value="{{ $livre->id }}">
+                                        <button type="submit" class="btn-action">
+                                            <ion-icon name="trash-outline"></ion-icon>
+                                        </button>
+                                    </form>
+                                @endguest
+
                             </div>
                         </div>
                         <div class="showcase-content">
