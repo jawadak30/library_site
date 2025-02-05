@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoriesRequest;
 use App\Models\Categorie;
+use App\Models\Livre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -21,6 +22,24 @@ class CategorieController extends Controller
     public function category_form_add()
     {
         return view('admin.categories.add_categories');
+    }
+    public function showLivres($id)
+    {
+        // Fetch the category
+        $categorie = Categorie::find($id);
+
+        // Check if category exists
+        if (!$categorie) {
+            return redirect()->back()->with('error', 'Category not found');
+        }
+
+        // Get all categories (for the header)
+        $categories = Categorie::all();
+
+        // Get books for the selected category with pagination (e.g., 10 per page)
+        $livres = Livre::where('categorie_id', $id)->paginate(10);
+
+        return view('components.books_category', compact('categories', 'livres'));
     }
 
     // Store a new category

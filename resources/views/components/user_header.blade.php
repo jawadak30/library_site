@@ -33,18 +33,22 @@
 
         <div class="header-top-actions">
 
-          <select name="language">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  languages
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                          <option value="en-US">
-                              <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                  {{ $properties['native'] }}
-                              </a>
-                          </option>
+                      <li>
+                          <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                              {{ $properties['native'] }}
+                          </a>
+                      </li>
                   @endforeach
+              </ul>
+            </div>
 
-          </select>
-
-        </div>
+          </div>
 
       </div>
 

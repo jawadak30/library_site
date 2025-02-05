@@ -12,7 +12,7 @@
 
           <div class="slider-item">
 
-            <img src="{{ asset('images_site/image1.jpg') }}" alt="women's latest fashion sale" class="banner-img">
+            <img src="{{ asset('images_site/first.jpg') }}" alt="women's latest fashion sale" class="banner-img">
 
             <div class="banner-content">
 
@@ -20,11 +20,11 @@
 
               <h2 class="banner-title">Women's latest fashion sale</h2>
 
-              <p class="banner-text">
+              {{-- <p class="banner-text">
                 starting at &dollar; <b>20</b>.00
-              </p>
+              </p> --}}
 
-              <a href="#" class="banner-btn">Shop now</a>
+              {{-- <a href="#" class="banner-btn">Shop now</a> --}}
 
             </div>
 
@@ -32,7 +32,7 @@
 
           <div class="slider-item">
 
-            <img src="{{ asset('images_site/image2.jpeg') }}" alt="modern sunglasses" class="banner-img">
+            <img src="{{ asset('images_site/two.jpg') }}" alt="modern sunglasses" class="banner-img">
 
             <div class="banner-content">
 
@@ -40,11 +40,11 @@
 
               <h2 class="banner-title">Modern sunglasses</h2>
 
-              <p class="banner-text">
+              {{-- <p class="banner-text">
                 starting at &dollar; <b>15</b>.00
-              </p>
+              </p> --}}
 
-              <a href="#" class="banner-btn">Shop now</a>
+              {{-- <a href="#" class="banner-btn">Shop now</a> --}}
 
             </div>
 
@@ -52,7 +52,7 @@
 
           <div class="slider-item">
 
-            <img src="{{ asset('images_site/image3.jpeg') }}" alt="new fashion summer sale" class="banner-img">
+            <img src="{{ asset('images_site/3.jpg') }}" alt="new fashion summer sale" class="banner-img">
 
             <div class="banner-content">
 
@@ -60,11 +60,11 @@
 
               <h2 class="banner-title">New fashion summer sale</h2>
 
-              <p class="banner-text">
+              {{-- <p class="banner-text">
                 starting at &dollar; <b>29</b>.99
-              </p>
+              </p> --}}
 
-              <a href="#" class="banner-btn">Shop now</a>
+              {{-- <a href="#" class="banner-btn">Shop now</a> --}}
 
             </div>
 
@@ -185,5 +185,5 @@
 
     </div>
 
-  </main>
+</main>
 
