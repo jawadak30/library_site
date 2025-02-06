@@ -11,13 +11,13 @@
         @auth
         <a href="{{ route('welcome') }}" class="header-logo">
             <img src="{{ asset('images_site/logo.jpg') }}" alt="Anon's logo" width="70" height="36">
-          </a>
+        </a>
         @endauth
         @guest
 
         <a href="{{ route('guest_welcome') }}" class="header-logo">
             <img src="{{ asset('images_site/logo.jpg') }}" alt="Anon's logo" width="70" height="36">
-          </a>
+        </a>
         @endguest
         <div class="header-user-actions">
             @auth
@@ -46,7 +46,7 @@
         <div class="header-top-actions">
 
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
                   languages
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -58,6 +58,21 @@
                       </li>
                   @endforeach
               </ul>
+              <li class="menu-category">
+
+                <button class="accordion-menu" data-accordion-btn>
+                  <p class="menu-title">settings</p>
+
+                  <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
+                </button>
+
+                <ul class="submenu-category-list" data-accordion>
+
+                    <a class="submenu-title" href="{{ route('profile.edit') }}">profile</a>
+
+                </ul>
+
+              </li>
             </div>
 
           </div>

@@ -29,6 +29,7 @@
                                     <th>Date d'Emprunt</th>
                                     <th>Heure d'Emprunt</th>
                                     <th>Date de Réservation</th>
+                                    <th>Date fin de Réservation</th>
                                     <th>État</th>
                                     <th>Utilisateur</th>
                                     <th>Livres</th>
@@ -42,6 +43,7 @@
                                     <td>{{ $reservation->dateEmprunt }}</td>
                                     <td>{{ $reservation->heureEmprunt }}</td>
                                     <td>{{ $reservation->dateReservation }}</td>
+                                    <td>{{ $reservation->fin_dateReservation }}</td>
                                     <td>
                                         <span class="badge
                                             @if($reservation->etat == 'en attente') bg-warning

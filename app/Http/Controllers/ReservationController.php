@@ -2,12 +2,14 @@
 namespace App\Http\Controllers;
 
 use \Log;
+use App\Mail\ReservationExpired;
 use App\Models\Categorie;
 use App\Models\Livre;
 use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ReservationController extends Controller
 {
@@ -137,6 +139,7 @@ class ReservationController extends Controller
             'dateEmprunt' => 'required|date|after_or_equal:today',
             'heureEmprunt' => 'required',
             'dateReservation' => 'required|date|after_or_equal:today',
+            'fin_dateReservation' => 'required|date|after_or_equal:dateReservation',
             'etat' => 'required|in:en attente,confirmée,annulée',
         ]);
 
@@ -146,6 +149,7 @@ class ReservationController extends Controller
             'dateEmprunt' => $request->dateEmprunt,
             'heureEmprunt' => $request->heureEmprunt,
             'dateReservation' => $request->dateReservation,
+            'fin_dateReservation' => $request->fin_dateReservation,
             'etat' => $request->etat,
         ]);
 
@@ -185,17 +189,15 @@ class ReservationController extends Controller
 
         // Validate the incoming data
         $request->validate([
-            'dateEmprunt' => 'required|date|after_or_equal:' . $nowDate, // Ensure the date is today or in the future
-            'heureEmprunt' => 'required|date_format:H:i', // Validate time format
+            'fin_dateReservation' => 'required|date|after_or_equal:' . $nowDate,
         ]);
 
         // Update the reservation
-        $reservation->dateEmprunt = $request->dateEmprunt;
-        $reservation->heureEmprunt = $request->heureEmprunt;
+        $reservation->fin_dateReservation = $request->fin_dateReservation;
 
         $reservation->save();
 
-        return redirect()->route('reservations.index')->with('success', 'Loan date updated successfully.');
+        return back()->with('success', 'Loan date updated successfully.');
     }
 
 
@@ -225,6 +227,22 @@ class ReservationController extends Controller
         $reservation->save();
 
         return back()->with('success', 'Reservation date updated.');
+    }
+
+
+    // this sendExpiredReservationEmails just when i have route in my project for example when i click on button this will work
+    public function sendExpiredReservationEmails()
+    {
+        // Get all expired reservations
+        $expiredReservations = Reservation::where('fin_dateReservation', now()->toDateString())
+                                          ->where('etat', '!=', 'annulée')
+                                          ->get();
+
+        // Send email for each expired reservation
+        foreach ($expiredReservations as $reservation) {
+            Mail::to($reservation->user->email)
+                ->send(new ReservationExpired($reservation));
+        }
     }
 
 

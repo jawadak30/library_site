@@ -30,19 +30,12 @@
                 <!-- Loan Date (Emprunt Date) Input -->
                 <!-- Loan Date (Emprunt Date) Input -->
                 <div class="form-group">
-                    <label for="dateEmprunt">Loan Date</label>
-                    <input type="date" name="dateEmprunt" id="dateEmprunt" class="form-control"
-                           value="{{ old('dateEmprunt', $reservation->dateEmprunt ?? now()->format('Y-m-d')) }}"
-                           min="{{ now()->format('Y-m-d') }}" >
+                    <label for="fin_dateReservation">Reservation End Date</label>
+                    <input type="date" name="fin_dateReservation" id="fin_dateReservation" class="form-control"
+                           value="{{ old('fin_dateReservation', $reservation->fin_dateReservation ?? now()->addDay()->format('Y-m-d')) }}"
+                           min="{{ old('fin_dateReservation', $reservation->fin_dateReservation ?? now()->format('Y-m-d')) }}">
                 </div>
 
-
-
-                <!-- Time for Loan (Heure Emprunt) -->
-                <div class="form-group">
-                    <label for="heureEmprunt">Loan Time</label>
-                    <input type="time" name="heureEmprunt" id="heureEmprunt" class="form-control" value="{{ old('heureEmprunt', $reservation->heureEmprunt) }}" required>
-                </div>
 
                 <div class="form-group mt-3">
                     <button type="submit" class="btn btn-success">Update</button>

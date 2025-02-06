@@ -18,7 +18,8 @@ class Reservation extends Model
         'dateEmprunt',
         'heureEmprunt',
         'dateReservation',
-        'etat' ,
+        'fin_dateReservation',
+        'etat',
     ];
     public function user()
     {

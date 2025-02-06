@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use \Log;
 use App\Models\Categorie;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 /**

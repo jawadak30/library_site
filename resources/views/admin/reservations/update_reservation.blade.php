@@ -48,8 +48,16 @@
                             <!-- Date de Réservation Field -->
                             <div class="form-group">
                                 <label for="dateReservation">Date de Réservation</label>
-                                <input type="date" name="dateReservation" id="dateReservation" class="form-control @error('dateReservation') is-invalid @enderror" value="{{ old('dateReservation', $reservation->dateReservation) }}">
+                                <input type="date" name="dateReservation" id="dateReservation" class="form-control @error('dateReservation') is-invalid @enderror" value="{{ old('dateReservation', $reservation->dateReservation) }}" min="{{ \Carbon\Carbon::now()->toDateString() }}">
                                 @error('dateReservation')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fin_dateReservation">Date de Fin de Réservation</label>
+                                <input type="date" name="fin_dateReservation" id="fin_dateReservation" class="form-control @error('fin_dateReservation') is-invalid @enderror" value="{{ old('fin_dateReservation', $reservation->fin_dateReservation) }}" min="{{ \Carbon\Carbon::now()->toDateString() }}">
+                                @error('fin_dateReservation')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -102,6 +110,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 @section('settings')
     @include('admin.admin_components.settings')

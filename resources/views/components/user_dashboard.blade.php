@@ -43,7 +43,24 @@
                                 <td>{{ $book->date_edition }}</td>
                                 <td>{{ $book->categorie->name ?? 'No category' }}</td>
                                 <td>{{ $reservation->dateReservation ?? 'N/A' }}</td>
-                                <td>{{ ucfirst($reservation->etat) ?? 'N/A' }}</td>
+
+                                <td>
+                                    @if($reservation->fin_dateReservation < now()->toDateString())
+                                        <span class="text-danger">Expired</span>
+                                    @else
+                                        <span class="text-success">Active</span>
+                                    @endif
+
+                                    @if($reservation->etat == 'confirmée')
+                                        <span class="badge bg-success">Confirmed</span>
+                                    @elseif($reservation->etat == 'annulée')
+                                        <span class="badge bg-danger">Cancelled</span>
+                                    @else
+                                        <span class="badge bg-warning">Pending</span>
+                                    @endif
+                                </td>
+
+
                                 <td>
                                     <form action="{{ route('reservations.deleteBook', ['reservation' => $reservation->id, 'book' => $book->id]) }}" method="POST" style="display:inline;">
                                         @csrf
@@ -74,42 +91,7 @@
 
 <script>
     new DataTable('#datatable', {
-        scrollX: true,  // Enable horizontal scroll
-  // Set default number of rows per page
-    });
-    // Wait for the document to be ready before adding event listeners
-    document.addEventListener("DOMContentLoaded", function() {
-        // Get all the buttons that open the modal
-        const openModalButtons = document.querySelectorAll('.open-modal-btn');
-
-        openModalButtons.forEach(button => {
-            button.addEventListener('click', function(event) {
-                // Get the reservation ID from the button's data-reservation-id attribute
-                const reservationId = this.getAttribute('data-reservation-id');
-
-                // Get the modal by the reservation ID
-                const modal = document.getElementById('updateDateModal' + reservationId);
-
-                // Show the modal by adding the 'show' class and setting display to block
-                modal.classList.add('show');
-                modal.style.display = 'block'; // Make sure the modal is visible
-
-                // Set the modal's aria-hidden attribute to false (to make it visible)
-                modal.setAttribute('aria-hidden', 'false');
-
-                // Disable body scroll when modal is open
-                document.body.style.overflow = 'hidden';
-
-                // Close the modal when the close button is clicked
-                const closeButton = modal.querySelector('.btn-close');
-                closeButton.addEventListener('click', function() {
-                    modal.classList.remove('show');
-                    modal.style.display = 'none';
-                    modal.setAttribute('aria-hidden', 'true');
-                    document.body.style.overflow = ''; // Re-enable body scroll
-                });
-            });
-        });
+        scrollX: true,  
     });
 </script>
 

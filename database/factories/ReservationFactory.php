@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use \App\Models\Livre;
+use \App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,13 +18,16 @@ class ReservationFactory extends Factory
      */
     public function definition(): array
     {
+        $dateReservation = now()->toDateString(); // Current date
+        $finDateReservation = now()->addWeek()->toDateString();
         return [
             'dateEmprunt' => $this->faker->date(),
             'heureEmprunt' => $this->faker->time(),
-            'dateReservation' => $this->faker->date(),
+            'dateReservation' => $dateReservation,
+            'fin_dateReservation' => $finDateReservation,
             'etat' => $this->faker->randomElement(['en attente', 'confirmée', 'annulée']),
-            'user_id' => \App\Models\User::factory(),
-            'livre_id' => \App\Models\Livre::factory(),
+            'user_id' => User::factory(),
+            'livre_id' => Livre::factory(),
         ];
     }
 }

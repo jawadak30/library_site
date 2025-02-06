@@ -55,7 +55,9 @@
                             <!-- Date d'édition Field -->
                             <div class="form-group">
                                 <label for="date_edition">Date d'édition</label>
-                                <input type="date" name="date_edition" id="date_edition" class="form-control @error('date_edition') is-invalid @enderror" value="{{ old('date_edition') }}" >
+                                <input type="date" name="date_edition" id="date_edition" class="form-control @error('date_edition') is-invalid @enderror"
+                                       value="{{ old('date_edition') }}"
+                                       max="{{ \Carbon\Carbon::now()->toDateString() }}">
                                 @error('date_edition')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -64,7 +66,8 @@
                             <!-- Nombre d'exemplaires Field -->
                             <div class="form-group">
                                 <label for="nbr_exemplaire">Nombre d'exemplaires</label>
-                                <input type="number" name="nbr_exemplaire" id="nbr_exemplaire" class="form-control @error('nbr_exemplaire') is-invalid @enderror" value="{{ old('nbr_exemplaire') }}" >
+                                <input type="number" name="nbr_exemplaire" id="nbr_exemplaire" class="form-control @error('nbr_exemplaire') is-invalid @enderror"
+                                       value="{{ old('nbr_exemplaire') }}" >
                                 @error('nbr_exemplaire')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -114,6 +117,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 @section('settings')
     @include('admin.admin_components.settings')
