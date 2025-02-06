@@ -15,7 +15,7 @@
     <div class="card shadow">
         <div class="card-header d-flex justify-content-between">
             <div class="header-title">
-                <h4 class="card-title">My Reserved Books</h4>
+                <h4 class="card-title">{{ trans('mainTrans.reserved_books') }}</h4>
             </div>
         </div>
         <div class="card-body">
@@ -24,13 +24,13 @@
                 <table id="datatable" class="table table-striped" data-toggle="data-table">
                     <thead>
                         <tr>
-                            <th>Book Title</th>
-                            <th>Author</th>
-                            <th>Edition Date</th>
-                            <th>Category</th>
-                            <th>Reservation Date</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th>{{ trans('mainTrans.book_title') }}</th>
+                            <th>{{ trans('mainTrans.author') }}</th>
+                            <th>{{ trans('mainTrans.edition_date') }}</th>
+                            <th>{{ trans('mainTrans.category') }}</th>
+                            <th>{{ trans('mainTrans.reservation_date') }}</th>
+                            <th>{{ trans('mainTrans.status') }}</th>
+                            <th>{{ trans('mainTrans.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,17 +46,17 @@
 
                                 <td>
                                     @if($reservation->fin_dateReservation < now()->toDateString())
-                                        <span class="text-danger">Expired</span>
+                                        <span class="text-danger">{{ trans('mainTrans.expired') }}</span>
                                     @else
-                                        <span class="text-success">Active</span>
+                                        <span class="text-success">{{ trans('mainTrans.actived') }}</span>
                                     @endif
 
                                     @if($reservation->etat == 'confirmée')
-                                        <span class="badge bg-success">Confirmed</span>
+                                        <span class="badge bg-success">{{ trans('mainTrans.confirmed') }}</span>
                                     @elseif($reservation->etat == 'annulée')
-                                        <span class="badge bg-danger">Cancelled</span>
+                                        <span class="badge bg-danger">{{ trans('mainTrans.canceled') }}</span>
                                     @else
-                                        <span class="badge bg-warning">Pending</span>
+                                        <span class="badge bg-warning">{{ trans('mainTrans.pending') }}</span>
                                     @endif
                                 </td>
 
@@ -65,10 +65,10 @@
                                     <form action="{{ route('reservations.deleteBook', ['reservation' => $reservation->id, 'book' => $book->id]) }}" method="POST" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete Book</button>
+                                        <button type="submit" class="btn btn-danger btn-sm">{{ trans('mainTrans.delete') }}</button>
                                     </form>
                                     <a href="{{ route('updateEmpruntDate', ['reservation' => $reservation->id, 'book' => $book->id]) }}" class="btn btn-warning btn-sm">
-                                        Update Date
+                                        {{ trans('mainTrans.update') }}
                                     </a>
                                 </td>
                             </tr>
@@ -91,7 +91,7 @@
 
 <script>
     new DataTable('#datatable', {
-        scrollX: true,  
+        scrollX: true,
     });
 </script>
 

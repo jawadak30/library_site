@@ -22,7 +22,7 @@
                 required
                 autofocus
             />
-            <label for="email" class="floating-label">Email</label>
+            <label for="email" class="floating-label">{{ trans('mainTrans.email') }}</label>
             @error('email')
                 <p class="error-message">{{ $message }}</p>
             @enderror

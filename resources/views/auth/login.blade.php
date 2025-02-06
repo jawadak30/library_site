@@ -24,7 +24,7 @@
                 autofocus
                 autocomplete="username"
             />
-            <label for="email" class="floating-label">Email</label>
+            <label for="email" class="floating-label">{{ trans('mainTrans.email') }}</label>
             @error('email')
                 <p class="error-text">{{ $message }}</p>
             @enderror
@@ -41,7 +41,7 @@
                 required
                 autocomplete="current-password"
             />
-            <label for="password" class="floating-label">Password</label>
+            <label for="password" class="floating-label">{{ trans('mainTrans.password') }}</label>
             @error('password')
                 <p class="error-text">{{ $message }}</p>
             @enderror
@@ -67,7 +67,7 @@
                     class="text-sm text-gray-600 hover:underline dark:text-gray-400"
                     href="{{ route('password.request') }}"
                 >
-                    Forgot your password?
+                    {{ trans('mainTrans.forgot_password') }}
                 </a>
             @endif
 
@@ -75,7 +75,7 @@
                 type="submit"
                 class="ml-4 px-6 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
             >
-                Log in
+                {{ trans('mainTrans.login') }}
             </button>
         </div>
     </form>

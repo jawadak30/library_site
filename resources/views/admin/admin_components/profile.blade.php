@@ -32,7 +32,7 @@
                                     <p class="d-inline-block pl-3"> - {{ ucfirst($user->role) }}</p>
 
                                     <!-- Display Admin's Email -->
-                                    <p class="mb-1"><strong>Email:</strong> {{ $user->email }}</p>
+                                    <p class="mb-1"><strong>{{ trans('mainTrans.email') }}:</strong> {{ $user->email }}</p>
 
                                     <!-- Display Last Login Time -->
                                     <p class="mb-1">

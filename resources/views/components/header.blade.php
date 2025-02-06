@@ -47,7 +47,7 @@
 
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
-                  languages
+                {{ trans('mainTrans.languages') }}
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
@@ -58,21 +58,23 @@
                       </li>
                   @endforeach
               </ul>
+              @auth
               <li class="menu-category">
 
                 <button class="accordion-menu" data-accordion-btn>
-                  <p class="menu-title">settings</p>
+                  <p class="menu-title">{{ trans('mainTrans.settings') }}</p>
 
                   <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
                 </button>
 
                 <ul class="submenu-category-list" data-accordion>
 
-                    <a class="submenu-title" href="{{ route('profile.edit') }}">profile</a>
+                    <a class="submenu-title" href="{{ route('profile.edit') }}">{{ trans('mainTrans.profile') }}</a>
 
                 </ul>
 
               </li>
+              @endauth
             </div>
 
           </div>
@@ -85,12 +87,12 @@
         <div class="container">
             <ul class="desktop-menu-category-list">
                 <li class="menu-category">
-                    <a href="{{ route('guest_welcome') }}" class="menu-title">Home</a>
+                    <a href="{{ route('guest_welcome') }}" class="menu-title">{{ trans('mainTrans.home') }}</a>
                 </li>
 
                 <!-- Categories Dropdown -->
                 <li class="menu-category">
-                    <a href="#" class="menu-title">Categories</a>
+                    <a href="#" class="menu-title">{{ trans('mainTrans.categories') }}</a>
 
                     <div class="dropdown-panel">
                         <ul class="dropdown-panel-list">
@@ -154,27 +156,27 @@
         <ul class="mobile-menu-category-list">
             @guest
                 <li class="menu-category">
-                    <a href="{{ route('guest_welcome') }}" class="menu-title">Home</a>
+                    <a href="{{ route('guest_welcome') }}" class="menu-title">{{ trans('mainTrans.home') }}</a>
                 </li>
             @endguest
             @auth
             <li class="menu-category">
-                <a href="{{ route('welcome') }}" class="menu-title">Home</a>
+                <a href="{{ route('welcome') }}" class="menu-title">{{ trans('mainTrans.home') }}</a>
             </li>
             @endauth
             @guest
                 <li class="menu-category">
-                    <a href="{{ route('login') }}" class="menu-title">login</a>
+                    <a href="{{ route('login') }}" class="menu-title">{{ trans('mainTrans.login') }}</a>
                 </li>
                 <li class="menu-category">
-                    <a href="{{ route('register') }}" class="menu-title">register</a>
+                    <a href="{{ route('register') }}" class="menu-title">{{ trans('mainTrans.register') }}</a>
                 </li>
             @endguest
 
           <li class="menu-category">
 
             <button class="accordion-menu" data-accordion-btn>
-              <p class="menu-title">categories</p>
+              <p class="menu-title">{{ trans('mainTrans.categories') }}</p>
 
               <div>
                 <ion-icon name="add-outline" class="add-icon"></ion-icon>
@@ -209,7 +211,7 @@
             <li class="menu-category">
 
               <button class="accordion-menu" data-accordion-btn>
-                <p class="menu-title">Language</p>
+                <p class="menu-title">{{ trans('mainTrans.languages') }}</p>
 
                 <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
               </button>
@@ -230,7 +232,7 @@
 
             <li class="menu-category">
                 @auth
-                    <a class="menu-title" href="{{ route('dashboard') }}" class="action-btn">Profile</a>
+                    <a class="menu-title" href="{{ route('dashboard') }}" class="action-btn">{{ trans('mainTrans.profile') }}</a>
                 @endauth
             </li>
 

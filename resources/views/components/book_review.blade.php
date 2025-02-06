@@ -21,14 +21,14 @@
 
                     <h3 class="showcase-title"><strong>Title:</strong> {{ $livre->titre }}</h3>
 
-                    <p><strong>Author:</strong> {{ $livre->auteur }}</p>
-                    <p><strong>Editor:</strong> {{ $livre->editeur }}</p>
-                    <p><strong>Publication Date:</strong> {{ \Carbon\Carbon::parse($livre->date_edition)->format('Y-m-d') }}
+                    <p><strong>{{ trans('mainTrans.author') }}:</strong> {{ $livre->auteur }}</p>
+                    <p><strong>{{ trans('mainTrans.editor') }}:</strong> {{ $livre->editeur }}</p>
+                    <p><strong>{{ trans('mainTrans.edition_date') }}:</strong> {{ \Carbon\Carbon::parse($livre->date_edition)->format('Y-m-d') }}
                     </p>
 
                     <div class="showcase-status">
                         <div class="wrapper">
-                            <p><strong>Available:</strong>{{ $livre->nbr_exemplaire }}</b></p>
+                            <p><strong>{{ trans('mainTrans.nombre_books') }}:</strong>{{ $livre->nbr_exemplaire }}</b></p>
                         </div>
                     </div>
 
@@ -36,14 +36,14 @@
                         <form action="{{ route('addToCart_user') }}" method="POST">
                             @csrf
                             <input type="hidden" name="book_id" value="{{ $livre->id }}">
-                            <button type="submit" class="add-cart-btn">add to Cart</button>
+                            <button type="submit" class="add-cart-btn">{{ trans('mainTrans.add_to_cart') }}</button>
                         </form>
                     @endauth
                     @guest
                     <form action="{{ route('addToCart_guest') }}" method="POST">
                         @csrf
                         <input type="hidden" name="book_id" value="{{ $livre->id }}">
-                        <button type="submit" class="add-cart-btn">add to Cart</button>
+                        <button type="submit" class="add-cart-btn">{{ trans('mainTrans.add_to_cart') }}</button>
                     </form>
                     @endguest
 

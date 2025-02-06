@@ -91,7 +91,7 @@
 
             <div class="product-main">
 
-              <h2 class="title">New Products</h2>
+              <h2 class="title">{{ trans('mainTrans.books') }}</h2>
 
               <div class="product-grid">
                 @foreach ($livres as $livre )
@@ -128,8 +128,8 @@
                     </div>
 
                     <div class="showcase-content">
-                        <a href="#" class="showcase-category">category : {{ $livre->categorie->name }}</a>
-                        <h3><a href="#" class="showcase-title">title : {{ $livre->titre }}</a></h3>
+                        <a href="#" class="showcase-category">{{ trans('mainTrans.category') }} : {{ $livre->categorie->name }}</a>
+                        <h3><a href="#" class="showcase-title">{{ trans('mainTrans.title') }} : {{ $livre->titre }}</a></h3>
 
 
                     </div>
@@ -151,7 +151,7 @@
       </div>
 
 
-    <div class="blog">
+    {{-- <div class="blog">
 
       <div class="container">
 
@@ -183,7 +183,7 @@
 
       </div>
 
-    </div>
+    </div> --}}
 
 </main>
 

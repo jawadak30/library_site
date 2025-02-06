@@ -35,7 +35,7 @@
 
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  languages
+                {{ trans('mainTrans.languages') }}
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
@@ -96,11 +96,11 @@
         <ul class="desktop-menu-category-list">
 
           <li class="menu-category">
-            <a href="#" class="menu-title">Home</a>
+            <a href="#" class="menu-title">{{ trans('mainTrans.home') }}</a>
           </li>
 
           <li class="menu-category">
-            <a href="#" class="menu-title">Categories</a>
+            <a href="#" class="menu-title">{{ trans('mainTrans.categories') }}</a>
 
             <div class="dropdown-panel">
 

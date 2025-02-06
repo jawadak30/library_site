@@ -215,7 +215,7 @@
               </div>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="{{ route('admin_profile') }}">Profile</a></li>
+              <li><a class="dropdown-item" href="{{ route('admin_profile') }}">{{ trans('mainTrans.profile') }}</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><form method="POST" action="{{ route('logout_users') }}">
                 @csrf

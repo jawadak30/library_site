@@ -26,7 +26,7 @@
 
 
 
-            <h4 class="logo-title">Hope UI</h4>
+            <h4 class="logo-title">E library</h4>
         </a>
         <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
             <i class="icon">
@@ -43,7 +43,7 @@
             <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
                 <li class="nav-item static-item">
                     <a class="nav-link static-item disabled" href="#" tabindex="-1">
-                        <span class="default-icon">Home</span>
+                        <span class="default-icon">{{ trans('mainTrans.home') }}</span>
                         <span class="mini-icon">-</span>
                     </a>
                 </li>
@@ -55,7 +55,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M4.53852 2H7.92449C9.32676 2 10.463 3.14585 10.463 4.55996V7.97452C10.463 9.38864 9.32676 10.5345 7.92449 10.5345H4.53852C3.13626 10.5345 2 9.38864 2 7.97452V4.55996C2 3.14585 3.13626 2 4.53852 2ZM4.53852 13.4655H7.92449C9.32676 13.4655 10.463 14.6114 10.463 16.0255V19.44C10.463 20.8532 9.32676 22 7.92449 22H4.53852C3.13626 22 2 20.8532 2 19.44V16.0255C2 14.6114 3.13626 13.4655 4.53852 13.4655ZM19.4615 13.4655H16.0755C14.6732 13.4655 13.537 14.6114 13.537 16.0255V19.44C13.537 20.8532 14.6732 22 16.0755 22H19.4615C20.8637 22 22 20.8532 22 19.44V16.0255C22 14.6114 20.8637 13.4655 19.4615 13.4655Z" fill="currentColor"></path>
                             </svg>
                         </i>
-                        <span class="item-name">Dashboard</span>
+                        <span class="item-name">{{ trans('mainTrans.dashboard') }}</span>
                     </a>
                 </li>
                 <li><hr class="hr-horizontal"></li>
@@ -70,7 +70,7 @@
                                 <path d="M21.9998 17.3992C21.9998 19.2648 20.4609 20.7777 18.5609 20.7777C16.6621 20.7777 15.1221 19.2648 15.1221 17.3992C15.1221 15.5325 16.6621 14.0195 18.5609 14.0195C20.4609 14.0195 21.9998 15.5325 21.9998 17.3992Z" fill="currentColor"></path>
                             </svg>
                         </i>
-                        <span class="item-name">Reservations</span>
+                        <span class="item-name">{{ trans('mainTrans.reservations') }}</span>
                         <i class="right-icon">
                             <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -88,7 +88,7 @@
                                     </svg>
                                 </i>
                               <i class="sidenav-mini-icon"> H </i>
-                              <span class="item-name"> all reservations </span>
+                              <span class="item-name"> {{ trans('mainTrans.all_reservations') }} </span>
                             </a>
                         </li>
                         <li class="nav-item" style="display: none">
@@ -100,8 +100,8 @@
                                         </g>
                                     </svg>
                                 </i>
-                                <i class="sidenav-mini-icon"> D </i>
-                                <span class="item-name">Add Reservation</span>
+                                <i class="sidenav-mini-icon"> </i>
+                                <span class="item-name"></span>
                             </a>
                         </li>
                     </ul>
@@ -115,7 +115,7 @@
                                 <path d="M8 3v18M16 3v18" stroke="currentColor" stroke-width="2"></path>
                             </svg>
                         </i>
-                        <span class="item-name">Books</span>
+                        <span class="item-name">{{ trans('mainTrans.books') }}</span>
                         <i class="right-icon">
                             <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -130,7 +130,7 @@
                                         <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
                                     </svg>
                                 </i>
-                                <span class="item-name">All Books</span>
+                                <span class="item-name">{{ trans('mainTrans.all_books') }}</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -140,7 +140,7 @@
                                         <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
                                     </svg>
                                 </i>
-                                <span class="item-name">Add Book</span>
+                                <span class="item-name">{{ trans('mainTrans.add_books') }}</span>
                             </a>
                         </li>
                     </ul>
@@ -154,7 +154,7 @@
                                 <path d="M8 4v16M16 4v16" stroke="currentColor" stroke-width="2"></path>
                             </svg>
                         </i>
-                        <span class="item-name">Categories</span>
+                        <span class="item-name">{{ trans('mainTrans.categories') }}</span>
                         <i class="right-icon">
                             <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -169,7 +169,7 @@
                                         <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
                                     </svg>
                                 </i>
-                                <span class="item-name">All Categories</span>
+                                <span class="item-name">{{ trans('mainTrans.all_categories') }}</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -179,7 +179,7 @@
                                         <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
                                     </svg>
                                 </i>
-                                <span class="item-name">Add Category</span>
+                                <span class="item-name">{{ trans('mainTrans.add_category') }}</span>
                             </a>
                         </li>
                     </ul>
@@ -193,7 +193,7 @@
                                 <path d="M5 20C5 16.6863 7.68629 14 11 14H13C16.3137 14 19 16.6863 19 20V21H5V20Z" fill="currentColor"></path>
                             </svg>
                         </i>
-                        <span class="item-name">Users</span>
+                        <span class="item-name">{{ trans('mainTrans.users') }}</span>
                         <i class="right-icon">
                             <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -208,7 +208,7 @@
                                         <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
                                     </svg>
                                 </i>
-                                <span class="item-name">All Users</span>
+                                <span class="item-name">{{ trans('mainTrans.all_users') }}</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -218,7 +218,7 @@
                                         <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
                                     </svg>
                                 </i>
-                                <span class="item-name">Add User</span>
+                                <span class="item-name">{{ trans('mainTrans.add_user') }}</span>
                             </a>
                         </li>
                     </ul>

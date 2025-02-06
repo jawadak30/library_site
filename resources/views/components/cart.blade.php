@@ -9,7 +9,7 @@
 @endsection
 @section('section')
 <div class="product-main">
-    <h2 class="title" >Cart</h2>
+    <h2 class="title" >{{ trans('mainTrans.cart') }}</h2>
 
     @if(session('cart') && count(session('cart')) > 0)
         <!-- Reserve All Button -->
@@ -17,7 +17,7 @@
         <!-- Authenticated users -->
         <form action="{{ route('reserveBooks') }}" method="POST">
             @csrf
-            <button type="submit">Reserve All Books</button>
+            <button type="submit">{{ trans('mainTrans.reserve_all_books') }}</button>
         </form>
     @endauth
 
@@ -25,7 +25,7 @@
         <!-- Guest users -->
         <form action="{{ route('guest.reserveBooks') }}" method="POST">
             @csrf
-            <button type="submit" class="btn-action">Reserver Tout</button>
+            <button type="submit" class="btn-action">{{ trans('mainTrans.reserve_all_books') }}</button>
         </form>
     @endguest
 
@@ -73,8 +73,8 @@
                             </div>
                         </div>
                         <div class="showcase-content">
-                            <a href="#" class="showcase-category">Category: {{ $livre->categorie->name }}</a>
-                            <h3><a href="#" class="showcase-title">Title: {{ $livre->titre }}</a></h3>
+                            <a href="#" class="showcase-category">{{ trans('mainTrans.category') }}: {{ $livre->categorie->name }}</a>
+                            <h3><a href="#" class="showcase-title">{{ trans('mainTrans.title') }}: {{ $livre->titre }}</a></h3>
                         </div>
                     </div>
                 @endif
