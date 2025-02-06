@@ -27,10 +27,10 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Role</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Last Login</th>
-                                    <th>Actions</th>
+                                    <th>{{ trans('mainTrans.name') }}</th>
+                                    <th>{{ trans('mainTrans.email') }}</th>
+                                    <th>{{ trans('mainTrans.last_login') }}</th>
+                                    <th>{{ trans('mainTrans.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,11 +44,11 @@
                                     <td>
                                         <!-- Update Button -->
                                         <form action="{{ route('user_form_update', $user->id) }}" method="GET" style="display: inline;">
-                                            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                            <button type="submit" class="btn btn-primary btn-sm">{{ trans('mainTrans.update') }}</button>
                                         </form>
 
                                         <!-- Delete Button -->
-                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $user->id }}">Delete</button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $user->id }}">{{ trans('mainTrans.delete') }}</button>
                                     </td>
                                 </tr>
 
@@ -57,7 +57,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteModalLabel{{ $user->id }}">Confirm Delete</h5>
+                                                <h5 class="modal-title" id="deleteModalLabel{{ $user->id }}">{{ trans('mainTrans.confirm_delete') }}</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
@@ -69,7 +69,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <input type="hidden" name="id" value="{{ $user->id }}">
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button type="submit" class="btn btn-danger">{{ trans('mainTrans.delete') }}</button>
                                                 </form>
                                             </div>
                                         </div>

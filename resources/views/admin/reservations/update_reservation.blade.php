@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Update Reservation</h4>
+                            <h4 class="card-title">{{ trans('mainTrans.update') }} Reservation</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -29,7 +29,7 @@
 
                             <!-- Date d'Emprunt Field -->
                             <div class="form-group">
-                                <label for="dateEmprunt">Date d'Emprunt</label>
+                                <label for="dateEmprunt">{{ trans('mainTrans.borrow_date') }}</label>
                                 <input type="date" name="dateEmprunt" id="dateEmprunt" class="form-control @error('dateEmprunt') is-invalid @enderror" value="{{ old('dateEmprunt', $reservation->dateEmprunt) }}">
                                 @error('dateEmprunt')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -38,7 +38,7 @@
 
                             <!-- Heure d'Emprunt Field -->
                             <div class="form-group">
-                                <label for="heureEmprunt">Heure d'Emprunt</label>
+                                <label for="heureEmprunt">{{ trans('mainTrans.borrow_time') }}</label>
                                 <input type="time" name="heureEmprunt" id="heureEmprunt" class="form-control @error('heureEmprunt') is-invalid @enderror" value="{{ old('heureEmprunt', $reservation->heureEmprunt) }}">
                                 @error('heureEmprunt')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -47,7 +47,7 @@
 
                             <!-- Date de Réservation Field -->
                             <div class="form-group">
-                                <label for="dateReservation">Date de Réservation</label>
+                                <label for="dateReservation">{{ trans('mainTrans.reservation_date') }}</label>
                                 <input type="date" name="dateReservation" id="dateReservation" class="form-control @error('dateReservation') is-invalid @enderror" value="{{ old('dateReservation', $reservation->dateReservation) }}" min="{{ \Carbon\Carbon::now()->toDateString() }}">
                                 @error('dateReservation')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -55,7 +55,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="fin_dateReservation">Date de Fin de Réservation</label>
+                                <label for="fin_dateReservation">{{ trans('mainTrans.fin_date_reservation') }}</label>
                                 <input type="date" name="fin_dateReservation" id="fin_dateReservation" class="form-control @error('fin_dateReservation') is-invalid @enderror" value="{{ old('fin_dateReservation', $reservation->fin_dateReservation) }}" min="{{ \Carbon\Carbon::now()->toDateString() }}">
                                 @error('fin_dateReservation')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -64,7 +64,7 @@
 
                             <!-- État Field -->
                             <div class="form-group">
-                                <label for="etat">État</label>
+                                <label for="etat">{{ trans('mainTrans.status') }}</label>
                                 <select name="etat" id="etat" class="form-control @error('etat') is-invalid @enderror">
                                     <option value="en attente" {{ old('etat', $reservation->etat) == 'en attente' ? 'selected' : '' }}>En attente</option>
                                     <option value="confirmée" {{ old('etat', $reservation->etat) == 'confirmée' ? 'selected' : '' }}>Confirmée</option>
@@ -77,7 +77,7 @@
 
                             <!-- User Field -->
                             <div class="form-group">
-                                <label for="user_id">Utilisateur</label>
+                                <label for="user_id">{{ trans('mainTrans.user') }}</label>
                                 <select name="user_id" id="user_id" class="form-control @error('user_id') is-invalid @enderror">
                                     @foreach($users as $user)
                                         <option value="{{ $user->id }}" {{ old('user_id', $reservation->user_id) == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
@@ -90,7 +90,7 @@
 
                             <!-- Livre Field -->
                             <div class="form-group">
-                                <label for="livre_id">Livre</label>
+                                <label for="livre_id">{{ trans('mainTrans.book') }}</label>
                                 <select name="livre_id" id="livre_id" class="form-control @error('livre_id') is-invalid @enderror">
                                     @foreach($livres as $livre)
                                         <option value="{{ $livre->id }}" {{ old('livre_id', $reservation->livre_id) == $livre->id ? 'selected' : '' }}>{{ $livre->titre }}</option>
@@ -102,7 +102,7 @@
                             </div>
 
                             <!-- Submit Button -->
-                            <button type="submit" class="btn btn-primary">Update Reservation</button>
+                            <button type="submit" class="btn btn-primary">{{ trans('mainTrans.update') }} Reservation</button>
                         </form>
                     </div>
                 </div>

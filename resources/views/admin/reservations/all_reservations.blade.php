@@ -26,14 +26,14 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Date d'Emprunt</th>
-                                    <th>Heure d'Emprunt</th>
-                                    <th>Date de Réservation</th>
-                                    <th>Date fin de Réservation</th>
-                                    <th>État</th>
-                                    <th>Utilisateur</th>
-                                    <th>Livres</th>
-                                    <th>Actions</th>
+                                    <th>{{ trans('mainTrans.borrow_date') }}</th>
+                                    <th>{{ trans('mainTrans.borrow_time') }}</th>
+                                    <th>{{ trans('mainTrans.reservation_date') }}</th>
+                                    <th>{{ trans('mainTrans.fin_date_reservation') }}</th>
+                                    <th>{{ trans('mainTrans.status') }}</th>
+                                    <th>{{ trans('mainTrans.user') }}</th>
+                                    <th>{{ trans('mainTrans.books') }}</th>
+                                    <th>{{ trans('mainTrans.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,11 +65,11 @@
                                     <td>
                                         <!-- Update Button -->
                                         <form action="{{ route('reservation_form_update', $reservation->id) }}" method="GET" style="display: inline;">
-                                            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                            <button type="submit" class="btn btn-primary btn-sm">{{ trans('mainTrans.update') }}</button>
                                         </form>
 
                                         <!-- Delete Button -->
-                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $reservation->id }}">Delete</button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $reservation->id }}">{{ trans('mainTrans.delete') }}</button>
                                     </td>
                                 </tr>
 
@@ -78,11 +78,11 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteModalLabel{{ $reservation->id }}">Confirm Delete</h5>
+                                                <h5 class="modal-title" id="deleteModalLabel{{ $reservation->id }}">{{ trans('mainTrans.confirm_delete') }}</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Are you sure you want to delete the reservation for the following books?<br>
+                                                {{ trans('mainTrans.delete_reservation_confirmation') }}<br>
                                                 @forelse($reservation->livres as $livre)
                                                     - {{ $livre->titre }}<br>
                                                 @empty
@@ -90,12 +90,12 @@
                                                 @endforelse
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ trans('mainTrans.canceled') }}</button>
                                                 <form action="{{ route('destroy_reservation') }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <input type="hidden" name="id" value="{{ $reservation->id }}">
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button type="submit" class="btn btn-danger">{{ trans('mainTrans.delete') }}</button>
                                                 </form>
                                             </div>
                                         </div>

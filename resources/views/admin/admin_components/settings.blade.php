@@ -8,7 +8,7 @@
 aria-labelledby="offcanvasExampleLabel">
 <div class="offcanvas-header">
   <div class="d-flex align-items-center">
-    <h3 class="offcanvas-title me-3" id="offcanvasExampleLabel">Settings</h3>
+    <h3 class="offcanvas-title me-3" id="offcanvasExampleLabel">{{ trans('mainTrans.settings') }}</h3>
   </div>
   <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 </div>

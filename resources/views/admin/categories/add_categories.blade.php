@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Add New Category</h4>
+                            <h4 class="card-title">{{ trans('mainTrans.add_new_category') }}</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -29,7 +29,7 @@
                             <!-- Category Name Field -->
                             <div class="row">
                                 <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="name">Category Name</label>
+                                    <label class="form-label" for="name">{{ trans('mainTrans.category_name') }}</label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" >
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -40,7 +40,7 @@
                             <!-- Category Description Field -->
                             <div class="row">
                                 <div class="col-md-12 mb-3">
-                                    <label class="form-label" for="description">Description</label>
+                                    <label class="form-label" for="description">{{ trans('mainTrans.description') }}</label>
                                     <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3">{{ old('description') }}</textarea>
                                     @error('description')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -50,7 +50,7 @@
 
                             <!-- Submit Button -->
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Add Category</button>
+                                <button type="submit" class="btn btn-primary">{{ trans('mainTrans.add_category') }}</button>
                             </div>
                         </form>
                     </div>

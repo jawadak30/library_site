@@ -36,20 +36,20 @@
 
                                     <!-- Display Last Login Time -->
                                     <p class="mb-1">
-                                        <strong>Last Login:</strong>
+                                        <strong>{{ trans('mainTrans.last_login') }}:</strong>
                                         {{ $user->last_login ? \Carbon\Carbon::parse($user->last_login)->format('Y-m-d H:i') : 'Never' }}
 
                                     </p>
 
                                     <!-- Display Account Creation Time -->
                                     <p class="mb-1">
-                                        <strong>Account Created:</strong>
+                                        <strong>{{ trans('mainTrans.account_created') }}:</strong>
                                         {{ $user->created_at->format('Y-m-d H:i:s') }}
                                     </p>
 
                                     <!-- Display Email Verification Status -->
                                     <p class="mb-1">
-                                        <strong>Email Verified:</strong>
+                                        <strong>{{ trans('mainTrans.Email_Verified') }}:</strong>
                                         {{ $user->email_verified_at ? 'Yes' : 'No' }}
                                     </p>
                                 </div>

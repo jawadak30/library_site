@@ -25,13 +25,13 @@
                         <table id="datatable" class="table table-striped" data-toggle="data-table">
                             <thead>
                                 <tr>
-                                    <th>Titre</th>
-                                    <th>Auteur</th>
-                                    <th>Editeur</th>
-                                    <th>Date d'édition</th>
-                                    <th>Nombre d'exemplaires</th>
-                                    <th>Catégorie</th>
-                                    <th>Actions</th>
+                                    <th>{{ trans('mainTrans.title') }}</th>
+                                    <th>{{ trans('mainTrans.author') }}</th>
+                                    <th>{{ trans('mainTrans.editor') }}</th>
+                                    <th>{{ trans('mainTrans.edition_date') }}</th>
+                                    <th>{{ trans('mainTrans.nombre_books') }}</th>
+                                    <th>{{ trans('mainTrans.category') }}</th>
+                                    <th>{{ trans('mainTrans.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,11 +46,11 @@
                                     <td>
                                         <!-- Update Button -->
                                         <form action="{{ route('book_form_update', $book->id) }}" method="GET" style="display: inline;">
-                                            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                            <button type="submit" class="btn btn-primary btn-sm">{{ trans('mainTrans.update') }}</button>
                                         </form>
 
                                         <!-- Delete Button -->
-                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $book->id }}">Delete</button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $book->id }}">{{ trans('mainTrans.delete') }}</button>
                                     </td>
                                 </tr>
 
@@ -59,19 +59,19 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteModalLabel{{ $book->id }}">Confirm Delete</h5>
+                                                <h5 class="modal-title" id="deleteModalLabel{{ $book->id }}">{{ trans('mainTrans.confirm_delete') }}</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Are you sure you want to delete the book "{{ $book->titre }}"?
+                                                {{ trans('mainTrans.delete_book_confirmation') }}"{{ $book->titre }}"?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ trans('mainTrans.canceled') }}</button>
                                                 <form action="{{ route('destroy_book') }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <input type="hidden" name="id" value="{{ $book->id }}">
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button type="submit" class="btn btn-danger">{{ trans('mainTrans.delete') }}</button>
                                                 </form>
                                             </div>
                                         </div>

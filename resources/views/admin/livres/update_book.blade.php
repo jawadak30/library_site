@@ -28,7 +28,7 @@
 
                             <!-- Titre Field -->
                             <div class="form-group">
-                                <label for="titre">Titre</label>
+                                <label for="titre">{{ trans('mainTrans.title') }}</label>
                                 <input type="text" name="titre" id="titre" class="form-control @error('titre') is-invalid @enderror" value="{{ old('titre', $book->titre) }}">
                                 @error('titre')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -37,7 +37,7 @@
 
                             <!-- Auteur Field -->
                             <div class="form-group">
-                                <label for="auteur">Auteur</label>
+                                <label for="auteur">{{ trans('mainTrans.author') }}</label>
                                 <input type="text" name="auteur" id="auteur" class="form-control @error('auteur') is-invalid @enderror" value="{{ old('auteur', $book->auteur) }}">
                                 @error('auteur')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -46,7 +46,7 @@
 
                             <!-- Editeur Field -->
                             <div class="form-group">
-                                <label for="editeur">Editeur</label>
+                                <label for="editeur">{{ trans('mainTrans.editor') }}</label>
                                 <input type="text" name="editeur" id="editeur" class="form-control @error('editeur') is-invalid @enderror" value="{{ old('editeur', $book->editeur) }}">
                                 @error('editeur')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -55,7 +55,7 @@
 
                             <!-- Date d'édition Field -->
                             <div class="form-group">
-                                <label for="date_edition">Date d'édition</label>
+                                <label for="date_edition">{{ trans('mainTrans.edition_date') }}</label>
                                 <input type="date" name="date_edition" id="date_edition" class="form-control @error('date_edition') is-invalid @enderror"
                                        value="{{ old('date_edition', $book->date_edition) }}"
                                        min="{{ \Carbon\Carbon::now()->toDateString() }}">
@@ -66,7 +66,7 @@
 
                             <!-- Nombre d'exemplaires Field -->
                             <div class="form-group">
-                                <label for="nbr_exemplaire">Nombre d'exemplaires</label>
+                                <label for="nbr_exemplaire">{{ trans('mainTrans.nombre_books') }}</label>
                                 <input type="number" name="nbr_exemplaire" id="nbr_exemplaire" class="form-control @error('nbr_exemplaire') is-invalid @enderror"
                                        value="{{ old('nbr_exemplaire', $book->nbr_exemplaire) }}">
                                 @error('nbr_exemplaire')
@@ -76,7 +76,7 @@
 
                             <!-- Catégorie Field -->
                             <div class="form-group">
-                                <label for="categorie_id">Catégorie</label>
+                                <label for="categorie_id">{{ trans('mainTrans.category') }}</label>
                                 <select name="categorie_id" id="categorie_id" class="form-control @error('categorie_id') is-invalid @enderror">
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}" {{ old('categorie_id', $book->categorie_id) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
@@ -95,7 +95,7 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                                 @if($book->image1)
-                                    <p>Current Image: <img src="{{ asset('storage/'.$book->image1) }}" alt="Image 1" width="100"></p>
+                                    <p> Image: <img src="{{ asset('storage/'.$book->image1) }}" alt="Image 1" width="100"></p>
                                 @endif
                             </div>
 
@@ -107,12 +107,12 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                                 @if($book->image2)
-                                    <p>Current Image: <img src="{{ asset('storage/'.$book->image2) }}" alt="Image 2" width="100"></p>
+                                    <p> Image: <img src="{{ asset('storage/'.$book->image2) }}" alt="Image 2" width="100"></p>
                                 @endif
                             </div>
 
                             <!-- Submit Button -->
-                            <button type="submit" class="btn btn-primary">Update Book</button>
+                            <button type="submit" class="btn btn-primary">{{ trans('mainTrans.update') }}</button>
                         </form>
                     </div>
                 </div>

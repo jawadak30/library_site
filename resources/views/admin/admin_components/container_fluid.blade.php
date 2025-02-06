@@ -9,7 +9,7 @@
                             <div class="card-body">
                                 <div class="progress-widget">
                                     <div class="progress-detail">
-                                        <p class="mb-2">Total Users</p>
+                                        <p class="mb-2">{{ trans('mainTrans.total_users') }}</p>
                                         <h4 class="counter">{{ $totalUsers }}</h4>
                                     </div>
                                 </div>
@@ -21,7 +21,7 @@
                             <div class="card-body">
                                 <div class="progress-widget">
                                     <div class="progress-detail">
-                                        <p class="mb-2">Total Categories</p>
+                                        <p class="mb-2">{{ trans('mainTrans.total_categories') }}</p>
                                         <h4 class="counter">{{ $totalCategories }}</h4>
                                     </div>
                                 </div>
@@ -33,7 +33,7 @@
                             <div class="card-body">
                                 <div class="progress-widget">
                                     <div class="progress-detail">
-                                        <p class="mb-2">Total Livres</p>
+                                        <p class="mb-2">{{ trans('mainTrans.total_livres') }}</p>
                                         <h4 class="counter">{{ $totalLivres }}</h4>
                                     </div>
                                 </div>
@@ -45,7 +45,7 @@
                             <div class="card-body">
                                 <div class="progress-widget">
                                     <div class="progress-detail">
-                                        <p class="mb-2">Total Reservations</p>
+                                        <p class="mb-2">{{ trans('mainTrans.total_reservation') }}</p>
                                         <h4 class="counter">{{ $totalReservations }}</h4>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@
                             <div class="card-body">
                                 <div class="progress-widget">
                                     <div class="progress-detail">
-                                        <p class="mb-2">New Reservations</p>
+                                        <p class="mb-2">{{ trans('mainTrans.new_reservations') }}</p>
                                         <h4 class="counter">{{ $newReservations }}</h4>
                                     </div>
                                 </div>

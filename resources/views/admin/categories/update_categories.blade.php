@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Update Category</h4>
+                            <h4 class="card-title">{{ trans('mainTrans.update_category') }}</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -28,7 +28,7 @@
                             @method('PATCH')
 
                             <div class="form-group">
-                                <label for="name">Category Name</label>
+                                <label for="name">{{ trans('mainTrans.category_name') }}</label>
                                 <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $category->name) }}">
                                 @error('name')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -36,14 +36,14 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="description">Description</label>
+                                <label for="description">{{ trans('mainTrans.description') }}</label>
                                 <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror">{{ old('description', $category->description) }}</textarea>
                                 @error('description')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Update Category</button>
+                            <button type="submit" class="btn btn-primary">{{ trans('mainTrans.update') }}</button>
                         </form>
 
 

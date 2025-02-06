@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Add User</h4>
+                            <h4 class="card-title">{{ trans('mainTrans.add_user') }}</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -27,7 +27,7 @@
                             <div class="row">
                                 <!-- Name Field -->
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label" for="name">Name</label>
+                                    <label class="form-label" for="name">{{ trans('mainTrans.name') }}</label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -36,7 +36,7 @@
 
                                 <!-- Email Field -->
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label" for="email">Email</label>
+                                    <label class="form-label" for="email">{{ trans('mainTrans.email') }}</label>
                                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
                                     @error('email')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -45,7 +45,7 @@
 
                                 <!-- Password Field -->
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label" for="password">Password</label>
+                                    <label class="form-label" for="password">{{ trans('mainTrans.password') }}</label>
                                     <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
                                     @error('password')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -54,7 +54,7 @@
 
                                 <!-- Role Field -->
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label" for="role">Role</label>
+                                    <label class="form-label" for="role">role</label>
                                     <select class="form-select @error('role') is-invalid @enderror" id="role" name="role">
                                         <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
                                         <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
@@ -67,7 +67,7 @@
 
                             <!-- Submit Button -->
                             <div class="form-group">
-                                <button class="btn btn-primary" type="submit">Submit</button>
+                                <button class="btn btn-primary" type="submit">{{ trans('mainTrans.submit') }}</button>
                             </div>
                         </form>
                     </div>

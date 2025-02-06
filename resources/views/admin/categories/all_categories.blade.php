@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Categories</h4>
+                        <h4 class="card-title">{{ trans('mainTrans.categories') }}</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -26,9 +26,9 @@
                             <thead>
                                 <tr>
                                     <th>#ID</th>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Actions</th>
+                                    <th>{{ trans('mainTrans.name') }}</th>
+                                    <th>{{ trans('mainTrans.description') }}</th>
+                                    <th>{{ trans('mainTrans.actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,11 +40,11 @@
                                     <td>
                                         <!-- Update Button -->
                                         <form action="{{ route('category_form_update',$category->id) }}" method="GET" style="display: inline;">
-                                            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                            <button type="submit" class="btn btn-primary btn-sm">{{ trans('mainTrans.update') }}</button>
                                         </form>
 
                                         <!-- Delete Button -->
-                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $category->id }}">Delete</button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $category->id }}">{{ trans('mainTrans.delete') }}</button>
                                     </td>
                                 </tr>
 
@@ -53,19 +53,19 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteModalLabel{{ $category->id }}">Confirm Delete</h5>
+                                                <h5 class="modal-title" id="deleteModalLabel{{ $category->id }}">{{ trans('mainTrans.confirm_delete') }}</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Are you sure you want to delete the category "{{ $category->name }}"?
+                                                {{ trans('mainTrans.delete_confirmation') }} "{{ $category->name }}"?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ trans('mainTrans.canceled') }}</button>
                                                 <form action="{{ route('destroy_category') }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <input type="hidden" name="id" value="{{ $category->id }}">
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button type="submit" class="btn btn-danger">{{ trans('mainTrans.delete') }}</button>
                                                 </form>
                                             </div>
                                         </div>

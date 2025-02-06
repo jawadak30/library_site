@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Add New Book</h4>
+                            <h4 class="card-title">{{ trans('mainTrans.add_book') }}</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -27,7 +27,7 @@
 
                             <!-- Titre Field -->
                             <div class="form-group">
-                                <label for="titre">Titre</label>
+                                <label for="titre">{{ trans('mainTrans.title') }}</label>
                                 <input type="text" name="titre" id="titre" class="form-control @error('titre') is-invalid @enderror" value="{{ old('titre') }}" >
                                 @error('titre')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -36,7 +36,7 @@
 
                             <!-- Auteur Field -->
                             <div class="form-group">
-                                <label for="auteur">Auteur</label>
+                                <label for="auteur">{{ trans('mainTrans.author') }}</label>
                                 <input type="text" name="auteur" id="auteur" class="form-control @error('auteur') is-invalid @enderror" value="{{ old('auteur') }}" >
                                 @error('auteur')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -45,7 +45,7 @@
 
                             <!-- Editeur Field -->
                             <div class="form-group">
-                                <label for="editeur">Editeur</label>
+                                <label for="editeur">{{ trans('mainTrans.editor') }}</label>
                                 <input type="text" name="editeur" id="editeur" class="form-control @error('editeur') is-invalid @enderror" value="{{ old('editeur') }}" >
                                 @error('editeur')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -54,7 +54,7 @@
 
                             <!-- Date d'édition Field -->
                             <div class="form-group">
-                                <label for="date_edition">Date d'édition</label>
+                                <label for="date_edition">{{ trans('mainTrans.edition_date') }}</label>
                                 <input type="date" name="date_edition" id="date_edition" class="form-control @error('date_edition') is-invalid @enderror"
                                        value="{{ old('date_edition') }}"
                                        max="{{ \Carbon\Carbon::now()->toDateString() }}">
@@ -65,7 +65,7 @@
 
                             <!-- Nombre d'exemplaires Field -->
                             <div class="form-group">
-                                <label for="nbr_exemplaire">Nombre d'exemplaires</label>
+                                <label for="nbr_exemplaire">{{ trans('mainTrans.nombre_books') }}</label>
                                 <input type="number" name="nbr_exemplaire" id="nbr_exemplaire" class="form-control @error('nbr_exemplaire') is-invalid @enderror"
                                        value="{{ old('nbr_exemplaire') }}" >
                                 @error('nbr_exemplaire')
@@ -75,9 +75,9 @@
 
                             <!-- Catégorie Field -->
                             <div class="form-group">
-                                <label for="categorie_id">Catégorie</label>
+                                <label for="categorie_id">{{ trans('mainTrans.category') }}</label>
                                 <select name="categorie_id" id="categorie_id" class="form-control @error('categorie_id') is-invalid @enderror" >
-                                    <option value="">Select a category</option>
+                                    <option value="">{{ trans('mainTrans.select_category') }}</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}" {{ old('categorie_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                     @endforeach
@@ -107,7 +107,7 @@
 
                             <!-- Submit Button -->
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Add Book</button>
+                                <button type="submit" class="btn btn-primary">{{ trans('mainTrans.add_category') }}</button>
                             </div>
                         </form>
 
