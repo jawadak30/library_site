@@ -16,9 +16,9 @@
 
             <div class="banner-content">
 
-              <p class="banner-subtitle">Trending item</p>
+              <p class="banner-subtitle">E library</p>
 
-              <h2 class="banner-title">Women's latest fashion sale</h2>
+              <h2 class="banner-title">Welcome to our library</h2>
 
               {{-- <p class="banner-text">
                 starting at &dollar; <b>20</b>.00
@@ -36,9 +36,9 @@
 
             <div class="banner-content">
 
-              <p class="banner-subtitle">Trending accessories</p>
+              <p class="banner-subtitle"></p>
 
-              <h2 class="banner-title">Modern sunglasses</h2>
+              <h2 class="banner-title">Modern books</h2>
 
               {{-- <p class="banner-text">
                 starting at &dollar; <b>15</b>.00
@@ -56,9 +56,9 @@
 
             <div class="banner-content">
 
-              <p class="banner-subtitle">Sale Offer</p>
+              <p class="banner-subtitle"></p>
 
-              <h2 class="banner-title">New fashion summer sale</h2>
+              <h2 class="banner-title"></h2>
 
               {{-- <p class="banner-text">
                 starting at &dollar; <b>29</b>.99

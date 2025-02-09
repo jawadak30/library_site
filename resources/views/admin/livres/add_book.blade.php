@@ -57,7 +57,7 @@
                                 <label for="date_edition">{{ trans('mainTrans.edition_date') }}</label>
                                 <input type="date" name="date_edition" id="date_edition" class="form-control @error('date_edition') is-invalid @enderror"
                                        value="{{ old('date_edition') }}"
-                                       max="{{ \Carbon\Carbon::now()->toDateString() }}">
+                                       min="{{ \Carbon\Carbon::now()->toDateString() }}">
                                 @error('date_edition')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

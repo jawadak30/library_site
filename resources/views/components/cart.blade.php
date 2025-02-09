@@ -15,7 +15,7 @@
         <!-- Reserve All Button -->
         @auth
         <!-- Authenticated users -->
-        <form action="{{ route('reserveBooks') }}" method="POST">
+        <form id="reserver" action="{{ route('reserveBooks') }}" method="POST" style="dispaly:flex !important; justify-content: center !important;">
             @csrf
             <button type="submit">{{ trans('mainTrans.reserve_all_books') }}</button>
         </form>
@@ -23,7 +23,7 @@
 
     @guest
         <!-- Guest users -->
-        <form action="{{ route('guest.reserveBooks') }}" method="POST">
+        <form id="reserver" action="{{ route('guest.reserveBooks') }}" method="POST" style="dispaly:flex !important; justify-content: center !important;">
             @csrf
             <button type="submit" class="btn-action">{{ trans('mainTrans.reserve_all_books') }}</button>
         </form>

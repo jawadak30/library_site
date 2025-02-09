@@ -17,7 +17,10 @@ class CategorieFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word(),
+            'name' => $this->faker->randomElement([
+                'Science Fiction', 'Mystery', 'Fantasy', 'Romance', 'Thriller', 'Biography',
+                'Self-Help', 'History', 'Philosophy', 'Technology', 'Education', 'Poetry'
+            ]),
             'description' => $this->faker->optional()->sentence(),
         ];
     }
